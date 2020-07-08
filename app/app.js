@@ -89,7 +89,7 @@ define([
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
             webscene: "ecd8fe61f5a841c0a51653d0c16f2bca",   // portal item ID of the webscene
-            usagename: "Ruimtenaam",                             // usage attribute (string)
+            usagename: "ROOM_NAME",                             // usage attribute (string)
             floorname: "Verdieping",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
             buildingIDname: "Complexnummer",                   // building attribute (int)
