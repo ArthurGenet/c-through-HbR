@@ -39,6 +39,9 @@ define([
     "esri/core/declare",
     "esri/config",
 
+    "esri/identity/OAuthInfo",
+    "esri/identity/IdentityManager",
+
     "esri/WebScene",
     "esri/views/SceneView",
     "esri/layers/SceneLayer",
@@ -61,6 +64,7 @@ define([
 
 ], function (
     declare, esriConfig,
+    config, OAuthInfo,
     WebScene, SceneView, SceneLayer, Basemap,
     BasemapToggle, Home,
     dom, on, domCtr, win, domStyle,
@@ -71,12 +75,12 @@ define([
         var settings_demo = {
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
-            webscene: "526c24dc95fe4ccdbe354a3e35cab4a6",   // portal item ID of the webscene
-            usagename: "Usage_Type",                             // usage attribute (string)
-            floorname: "Floor_Level",                           // floor attribute (int)
+            webscene: "e6f2e4a934044e9892fc7add05d84bd8",   // portal item ID of the webscene
+            usagename: "Ruimtenaam",                             // usage attribute (string)
+            floorname: "Verdieping",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
             buildingIDname: "Building_ID",                   // building attribute (int)
-            areaname: "Area_Unit",                           // area attribute (float)
+            areaname: "Oppervlak",                           // area attribute (float)
             color: [      
                                              // color ramp for unique value renderer
                     //other 
@@ -114,6 +118,18 @@ define([
             },
 
             init: function (settings) {
+
+            	var info = new OAuthInfo({
+			        // Swap this ID out with a registered application ID
+			        appId: "nCTVYx63y8WJGjxY",
+			        // Uncomment the next line and update if using your own portal
+			        // portalUrl: "https://<host>:<port>/arcgis"
+			        // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
+			        // authNamespace: "portal_oauth_inline",
+			        popup: true
+			    });
+			    
+			    esriId.registerOAuthInfos([info]);
 
                 // destroy welcome page when app is started
                 domCtr.destroy("welcome");
