@@ -90,10 +90,10 @@ define([
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
             webscene: "ecd8fe61f5a841c0a51653d0c16f2bca",   // portal item ID of the webscene
             usagename: "ROOM_NAME",                             // usage attribute (string)
-            floorname: "Verdieping",                           // floor attribute (int)
+            floorname: "FLOOR_LEVEL",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
-            buildingIDname: "Complexnummer",                   // building attribute (int)
-            areaname: "Oppervlak",                           // area attribute (float)
+            buildingIDname: "BUILDING_CODE",                   // building attribute (int)
+            areaname: "AREAPOOL_CODE",                           // area attribute (float)
             color: [      
                                              // color ramp for unique value renderer
                     //other 
