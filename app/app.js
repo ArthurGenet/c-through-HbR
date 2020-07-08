@@ -88,7 +88,7 @@ define([
         var settings_demo = {
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
-            webscene: "72dd48691d8c43a0be54a3992c763ca9",   // portal item ID of the webscene
+            webscene: "ecd8fe61f5a841c0a51653d0c16f2bca",   // portal item ID of the webscene
             usagename: "Ruimtenaam",                             // usage attribute (string)
             floorname: "Verdieping",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
@@ -200,7 +200,7 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.id === "1e Verdieping";
+                    this.settings.layer1 = this.scene.layers.getItemAt(1);
                     console.log(this.settings.layer1);
                     var popup = {
                         title: "Building Information", // the title of the popup
@@ -238,7 +238,7 @@ define([
                             ]
                         }]
                     }
-                    this.settings.layer1.popupTemplate =popup;
+                    //this.settings.layer1.popupTemplate =popup;
 
                     // create background layer (identical copy of active layer) for highlighting and add it to the scene
                     this.settings.layer2 = new SceneLayer({
