@@ -64,14 +64,24 @@ define([
 
 ], function (
     declare, esriConfig,
-    config, OAuthInfo,
+    OAuthInfo, esriId,
     WebScene, SceneView, SceneLayer, Basemap,
     BasemapToggle, Home,
     dom, on, domCtr, win, domStyle,
     Search,
     ToolsMenu, Welcome, queryTools) {
 
+		var info = new OAuthInfo({
+			        // Swap this ID out with a registered application ID
+			        appId: "nCTVYx63y8WJGjxY",
+			        // Uncomment the next line and update if using your own portal
+			        // portalUrl: "https://<host>:<port>/arcgis"
+			        // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
+			        // authNamespace: "portal_oauth_inline",
+			        popup: true
+			    });
 
+				esriId.registerOAuthInfos([info]);
 
 
         // application settings
@@ -145,17 +155,7 @@ define([
                 // fix CORS issues by adding portal url to cors enabled servers list
                 esriConfig.request.corsEnabledServers.push("http://zurich.maps.arcgis.com");
 
-                var info = {
-			        // Swap this ID out with a registered application ID
-			        appId: "nCTVYx63y8WJGjxY",
-			        // Uncomment the next line and update if using your own portal
-			        // portalUrl: "https://<host>:<port>/arcgis"
-			        // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
-			        // authNamespace: "portal_oauth_inline",
-			        popup: true
-			    };
 
-				esriId.registerOAuthInfos([info]);
 
                 // load scene with portal ID
                 this.scene = new WebScene({
