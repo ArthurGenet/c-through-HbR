@@ -145,7 +145,7 @@ define([
                 // fix CORS issues by adding portal url to cors enabled servers list
                 esriConfig.request.corsEnabledServers.push("http://zurich.maps.arcgis.com");
 
-                var info = new OAuthInfo({
+                var info = {
 			        // Swap this ID out with a registered application ID
 			        appId: "nCTVYx63y8WJGjxY",
 			        // Uncomment the next line and update if using your own portal
@@ -153,7 +153,7 @@ define([
 			        // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
 			        // authNamespace: "portal_oauth_inline",
 			        popup: true
-			    });
+			    };
 
 				esriId.registerOAuthInfos([info]);
 
