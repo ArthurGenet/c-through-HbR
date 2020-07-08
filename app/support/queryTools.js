@@ -43,6 +43,7 @@ define([
                     return layer.queryFeatures(query);
 
                 }).then(function (results) {
+                    console.log("bateau pirate");
                     var selection = results.features;
 
                     for (var i = 0; i < selection.length; i++) {
@@ -55,7 +56,7 @@ define([
                             values.splice(j, 1);
                         }
                     }
-
+                    
                     callback(values);
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);

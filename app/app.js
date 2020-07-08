@@ -256,6 +256,7 @@ define([
                     console.log("oklm");
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
                     queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                    	console.log("c'est passé");
                         distinctValues.sort();
                         this.settings.values = distinctValues;
 
