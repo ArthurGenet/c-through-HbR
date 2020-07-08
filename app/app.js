@@ -200,7 +200,7 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.getItemAt(0);
+                    this.settings.layer1 = this.scene.layers.getItemAt(1);
 
                     var popup = {
                         title: "Building Information", // the title of the popup
