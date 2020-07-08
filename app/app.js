@@ -88,7 +88,7 @@ define([
         var settings_demo = {
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
-            webscene: "e6f2e4a934044e9892fc7add05d84bd8",   // portal item ID of the webscene
+            webscene: "72dd48691d8c43a0be54a3992c763ca9",   // portal item ID of the webscene
             usagename: "Ruimtenaam",                             // usage attribute (string)
             floorname: "Verdieping",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
