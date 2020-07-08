@@ -93,7 +93,7 @@ define([
             floorname: "FLOOR_LEVEL",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
             buildingIDname: "BUILDING_CODE",                   // building attribute (int)
-            areaname: "AREAPOOL_CODE",                           // area attribute (float)
+            areaname: "AREAPOOL_NO",                           // area attribute (float)
             color: [      
                                              // color ramp for unique value renderer
                     //other 
