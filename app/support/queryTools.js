@@ -39,6 +39,8 @@ define([
                 query.returnGeometry = false;
                 query.returnDistinctValues = true;
                 query.outFields = [fieldname];
+                console.log(fieldname);
+                console.log(layer);
                 layer.load().then(function () {
                     return layer.queryFeatures(query);
 
@@ -56,7 +58,7 @@ define([
                             values.splice(j, 1);
                         }
                     }
-                    
+
                     callback(values);
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
