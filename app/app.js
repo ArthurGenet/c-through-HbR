@@ -201,7 +201,7 @@ define([
 
                     // retrieve active layer from webscene
                     this.settings.layer1 = this.scene.layers.id === "1e Verdieping";
-
+                    console.log(this.settings.layer1);
                     var popup = {
                         title: "Building Information", // the title of the popup
                         "content": [{
@@ -239,6 +239,7 @@ define([
                         }]
                     }
                     this.settings.layer1.popupTemplate =popup;
+
                     // create background layer (identical copy of active layer) for highlighting and add it to the scene
                     this.settings.layer2 = new SceneLayer({
                         url: this.settings.layer1.url,
@@ -252,6 +253,7 @@ define([
                     this.settings.layer1.visible = true;
 
                     this.settings.layer2.visible = false;
+                    console.log("oklm");
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
                     queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                         distinctValues.sort();
