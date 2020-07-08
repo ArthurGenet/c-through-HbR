@@ -92,7 +92,7 @@ define([
             usagename: "Ruimtenaam",                             // usage attribute (string)
             floorname: "Verdieping",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
-            buildingIDname: "Building_ID",                   // building attribute (int)
+            buildingIDname: "Complexnummer",                   // building attribute (int)
             areaname: "Oppervlak",                           // area attribute (float)
             color: [      
                                              // color ramp for unique value renderer
