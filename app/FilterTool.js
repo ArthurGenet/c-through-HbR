@@ -198,7 +198,7 @@ define([
 
             createFilterFloorUI: function (container) {
                 this.LevelFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-floors" }, container);
-                queryTools.distinctValues(this.settings.layer1, this.settings.floorname, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1[0], this.settings.floorname, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
                     distinctValues.unshift("Selecteer verdieping");
 
@@ -215,7 +215,7 @@ define([
             createFilterUsageUI: function (container) {
                 this.UsageFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-usage" }, container);
 
-                queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
                     distinctValues.unshift("Selecteer gebruiksfunctie");
 
@@ -242,7 +242,7 @@ define([
 
                 var max, min;
 
-                queryTools.distinctValues(this.settings.layer1, this.settings.areaname, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1[0], this.settings.areaname, this.settings.OIDname, function (distinctValues) {
 
                     distinctValues.sort(function (a, b) {
                         return a - b;

@@ -170,14 +170,14 @@ define([
 
             initialChart: function (settings, callback) {
 
-                settings.layer1.load().then(function () {
+                settings.layer1[0].load().then(function () {
 
-                    var query = settings.layer1.createQuery();
+                    var query = settings.layer1[0].createQuery();
 
                     query.returnGeometry = false;
                     query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
-                    settings.layer1.queryFeatures(query).then(function (result) {
+                    settings.layer1[0].queryFeatures(query).then(function (result) {
                         var currentResult = result.features;
 
                         var initData = currentResult;
@@ -213,39 +213,39 @@ define([
             setVizCity: function (vizName, highlight, selection) {
                 var settings = this.settings;
 
-                settings.layer1.opacity = 0.85;
-                settings.layer2.opacity = 0.85;
+                settings.layer1[0].opacity = 0.85;
+                settings.layer2[0].opacity = 0.85;
 
                 if (selection !== undefined && selection !== "") {
-                    settings.layer1.definitionExpression = selection;
+                    settings.layer1[0].definitionExpression = selection;
 
                     //settings.layer2.visible = false;
 
 
                     if (highlight == undefined) {
-                        settings.layer2.visible = false;
+                        settings.layer2[0].visible = false;
                     } else {
-                        settings.layer2.visible = true;
+                        settings.layer2[0].visible = true;
 
-                        settings.layer2.renderer = this.settings.render;
-                        settings.layer2.definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
-                        settings.layer2.opacity = 0.5;
+                        settings.layer2[0].renderer = this.settings.render;
+                        settings.layer2[0].definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
+                        settings.layer2[0].opacity = 0.5;
                     }
                 } else {
-                    settings.layer1.visible = true;
+                    settings.layer1[0].visible = true;
 
-                    settings.layer2.visible = false;
+                    settings.layer2[0].visible = false;
 
-                    settings.layer1.definitionExpression = undefined;
+                    settings.layer1[0].definitionExpression = undefined;
                     if (vizName === "white"){
-                        settings.layer1.renderer = this.settings.render;
+                        settings.layer1[0].renderer = this.settings.render;
                     }
                     if(vizName === "usage"){
-                        settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                        settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                     }
      
                     if (vizName === "area"){
-                        settings.layer1.renderer = this.settings.render;
+                        settings.layer1[0].renderer = this.settings.render;
                     }
 
                     //settings.layer1.renderer = null;
@@ -266,7 +266,7 @@ define([
                 var settings = this.settings;
 
                 if (vizName === "white") {
-                    settings.layer1.renderer = this.settings.render;
+                    settings.layer1[0].renderer = this.settings.render;
                    
                     //settings.layer1.renderer = null;
 
@@ -278,7 +278,7 @@ define([
                     }.bind(this));
                 }
                 if (vizName === "usage") {
-                    settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                    settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                     domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
@@ -289,7 +289,7 @@ define([
                 }
                 if (vizName === "area") {
                     //settings.layer1.renderer = applyRenderer.createRendererVV(initData, settings.areaname);
-                    settings.layer1.renderer = this.settings.render;
+                    settings.layer1[0].renderer = this.settings.render;
 
                     domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
@@ -305,12 +305,12 @@ define([
                     this.menu.setLoadingState("busy");
                 }
 
-                var query = settings.layer1.createQuery();
+                var query = settings.layer1[0].createQuery();
 
                 query.returnGeometry = false;
                 query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
-                settings.layer1.queryFeatures(query).then(function (result) {
+                settings.layer1[0].queryFeatures(query).then(function (result) {
 
                     var selection = result.features;
 

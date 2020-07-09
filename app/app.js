@@ -104,18 +104,8 @@ define([
                     [158, 85, 156, 1], //kantooor
                     
                     [107, 107, 214, 1], //logie
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
-                    [107, 107, 214, 1],
+                    
+
                     [0,0,0],
                     [20, 158, 206, 1], //overig
                     
@@ -210,63 +200,43 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.getItemAt(1);
-                    console.log(this.settings.layer1.title);
-                    console.log(this.settings.layer1);
-                    var popup = {
-                        title: "Building Information", // the title of the popup
-                        "content": [{
-                            "type": "fields",
-                            "fieldInfos": [
-                                {
-                                  "fieldName": this.settings.usagename,
-                                  "label": "Usage Name",
-                                  "isEditable": true,
-                                  "tooltip": "",
-                                  "visible": true,
-                                  "format": null,
-                                  "stringFieldOption": "text-box"
-                                },
-                                {
-                                  "fieldName": this.settings.floorname,
-                                  "label": "Floor Level",
-                                  "isEditable": true,
-                                  "tooltip": "",
-                                  "visible": true,
-                                  "format": null,
-                                  "stringFieldOption": "text-box"
-                                },
-                                {
-                                  "fieldName": this.settings.areaname,
-                                  "label": "Area in m2",
-                                  "isEditable": true,
-                                  "tooltip": "",
-                                  "visible": true,
-                                  "format": null,
-                                  "stringFieldOption": "text-box"
-                                }
-                                
-                            ]
-                        }]
+                    this.settings.layer1 = [];
+                    for (let i = 0; i<9; i+=1){
+						this.settings.layer1.push(this.scene.layers.getItemAt(i));
                     }
+                                
+                    console.log(this.settings.layer1);
+                    
                     //this.settings.layer1.popupTemplate =popup;
 
                     // create background layer (identical copy of active layer) for highlighting and add it to the scene
-                    this.settings.layer2 = new SceneLayer({
-                        url: this.settings.layer1.url,
-                        popupEnabled: false
-                    });
-                    this.settings.render = this.settings.layer1.renderer;
+                    
+                    this.settings.layer2 = [];
+                    for (let i = 0; i<9; i+=1){
+
+						this.settings.layer2.push(new SceneLayer({
+	                        url: this.settings.layer1.url,
+	                        popupEnabled: false
+                    }));
+
+                    }
+
+                    
+                    this.settings.render = this.settings.layer1[0].renderer;
 
 
-                    this.scene.add(this.settings.layer2);
+                    this.scene.add(this.settings.layer2[0]);
 
-                    this.settings.layer1.visible = true;
+                    for (let i = 0; i<9; i+=1){
+                    	this.settings.layer1[i].visible = true;
 
-                    this.settings.layer2.visible = false;
+                    	this.settings.layer2[i].visible = false;
+                    }
+
+                    
                     console.log("oklm");
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
-                    queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                    queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     	console.log("c'est passé");
                         distinctValues.sort();
                         this.settings.values = distinctValues;
