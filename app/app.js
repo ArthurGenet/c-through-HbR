@@ -92,8 +92,8 @@ define([
             usagename: "ROOM_NAME",                             // usage attribute (string)
             floorname: "FLOOR_LEVEL",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
-            buildingIDname: "BUILDING_CODE",                   // building attribute (int)
-            areaname: "AREAPOOL_NO",                           // area attribute (float)
+            buildingIDname: "COMPLEX_NO",                   // building attribute (int)
+            areaname: "ROOM_AREA",                           // area attribute (float)
             color: [      
                                              // color ramp for unique value renderer
                     //other 
