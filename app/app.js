@@ -236,7 +236,8 @@ define([
                     
                     console.log("oklm");
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
-                    queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                    for (let i = 0; i<9; i+=1){
+                    queryTools.distinctValues(this.settings.layer1[i], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     	console.log("c'est passé");
                         distinctValues.sort();
                         this.settings.values = distinctValues;
@@ -263,13 +264,14 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                    }.bind(this));
+                    }.bind(this))};
 
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
                 });
 
             },
+
 
             getSettingsFromUser: function (settings) {
                 if (settings === "demo"){
