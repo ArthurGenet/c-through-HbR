@@ -88,7 +88,7 @@ define([
         var settings_demo = {
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
-            webscene: "ecd8fe61f5a841c0a51653d0c16f2bca",   // portal item ID of the webscene
+            webscene: "d59683e18cca4008b61d4b7cb2572dbb",   // portal item ID of the webscene
             usagename: "ROOM_NAME",                             // usage attribute (string)
             floorname: "FLOOR_LEVEL",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
@@ -200,7 +200,7 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.getItemAt(0);
+                    this.settings.layer1 = this.scene.layers.getItemAt(9);
                     console.log(this.settings.layer1);
                     var popup = {
                         title: "Building Information", // the title of the popup
