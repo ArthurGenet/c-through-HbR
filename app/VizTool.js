@@ -193,13 +193,9 @@ define([
                         	console.log(initData);
                         }
                         console.log(initData);
-
-                        
-
-                  		
-
-                    }.bind(this));}
-                    	console.log("ici");
+                        if (i == settings.layer1.length-1){
+                        	console.log(i);
+                        	console.log("ici");
                     // for white renderer
                         var initStats = statsMaker.createChartData(initData, settings, this.view);
                         // for usage renderer
@@ -214,6 +210,13 @@ define([
                         };
 
                     callback(initData, initCharts);
+
+                        }
+                        
+                  		
+
+                    }.bind(this));}
+
 
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
