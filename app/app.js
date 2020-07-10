@@ -242,7 +242,7 @@ define([
                         distinctValues.sort();
                         console.log(i);
                         console.log(distinctValues);
-                        if(i==1){
+                        if(window.this.settings.values == "undefined"){
                         	this.settings.values = distinctValues;
                         }
                         else{
