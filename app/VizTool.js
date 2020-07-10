@@ -186,10 +186,11 @@ define([
                         console.log(currentResult);
                         if(initData == []){
                         	initData = currentResult;
+                        	console.log(initData);
                         }
                         else{
-                        	initData.concat(currentResult);
-
+                        	initData = initData.concat(currentResult);
+                        	console.log(initData);
                         }
                         console.log(initData);
 
