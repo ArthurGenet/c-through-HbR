@@ -168,7 +168,9 @@ define([
 
             },
 
-            initialChart: function (settings, callback) {
+            initialChart: function (settings) {
+
+            	for (let i = 0; i < settings.layer1.length; i+=1){
 
                 settings.layer1[0].load().then(function () {
 
@@ -194,13 +196,11 @@ define([
                             area: initArea
                         };
 
-                        callback(initData, initCharts);
+                        //callback(initData, initCharts);
 
-                    }.bind(this));
-
-                }.bind(this)).otherwise(function (err) {
-                    console.error(err);
-                });
+					}
+				}
+                }
             },
 
             setSelection: function (sel, highlight, selection) {

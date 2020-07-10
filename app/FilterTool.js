@@ -216,7 +216,7 @@ define([
             createFilterUsageUI: function (container) {
                 this.UsageFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-usage" }, container);
 
-                queryTools.distinctValues(this.settings.layer1[1], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
                     distinctValues.unshift("Selecteer gebruiksfunctie");
 
