@@ -168,9 +168,9 @@ define([
 
             },
 
-            initialChart: function (settings) {
+            initialChart: function (settings, callback) {
 
-            	for (let i = 0; i < settings.layer1.length; i+=1){
+            	
 
                 settings.layer1[0].load().then(function () {
 
@@ -179,16 +179,26 @@ define([
                     query.returnGeometry = false;
                     query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
+                    var initData = [];
+                    for (let i = 0; i < settings.layer1.length; i+=1){
                     settings.layer1[0].queryFeatures(query).then(function (result) {
                         var currentResult = result.features;
+                        console.log(currentResult);
 
-                        var initData = currentResult;
-                        // for white renderer
-                        var initStats = statsMaker.createChartData(currentResult, settings, this.view);
+                        initData.push(currentResult);
+
+                        
+
+                  		
+
+                    }.bind(this));}
+
+                    // for white renderer
+                        var initStats = statsMaker.createChartData(initData, settings, this.view);
                         // for usage renderer
-                        var initUsage = chartMaker.createChartData(currentResult, settings);
+                        var initUsage = chartMaker.createChartData(initData, settings);
                         // for area renderer
-                        var initArea = barMaker.createChartData(currentResult, settings, 10);
+                        var initArea = barMaker.createChartData(initData, settings, 10);
 
                         var initCharts = {
                             stats: initStats,
@@ -196,11 +206,11 @@ define([
                             area: initArea
                         };
 
-                        //callback(initData, initCharts);
+                    callback(initData, initCharts);
 
-					}
-				}
-                }
+                }.bind(this)).otherwise(function (err) {
+                    console.error(err);
+                });
             },
 
             setSelection: function (sel, highlight, selection) {
