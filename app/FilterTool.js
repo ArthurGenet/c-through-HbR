@@ -200,6 +200,7 @@ define([
                 this.LevelFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-floors" }, container);
                 queryTools.distinctValues(this.settings.layer1[0], this.settings.floorname, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
+                    distinctValues = [-1,0,1,2,3,4,5,6,7,8,9];
                     distinctValues.unshift("Selecteer verdieping");
 
                     this.setDropdown("FloorLevel", distinctValues, this.LevelFilterContainer, function (floorSelector) {
@@ -215,7 +216,7 @@ define([
             createFilterUsageUI: function (container) {
                 this.UsageFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-usage" }, container);
 
-                queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1[1], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
                     distinctValues.unshift("Selecteer gebruiksfunctie");
 

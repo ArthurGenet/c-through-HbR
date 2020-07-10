@@ -221,14 +221,14 @@ define([
 
                     //settings.layer1.renderer = applyRenderer.createRendererVV(selection, settings.areaname);
                     settings.layer1[0].renderer = settings.render;
-                    setting.layer1[1].renderer = settings.render;
-                    setting.layer1[2].renderer = settings.render;
-                    setting.layer1[3].renderer = settings.render;
-                    setting.layer1[4].renderer = settings.render;
-                    setting.layer1[5].renderer = settings.render;
-                    setting.layer1[6].renderer = settings.render;
-                    setting.layer1[7].renderer = settings.render;
-                    setting.layer1[8].renderer = settings.render;
+                    settings.layer1[1].renderer = settings.render;
+                    settings.layer1[2].renderer = settings.render;
+                    settings.layer1[3].renderer = settings.render;
+                    settings.layer1[4].renderer = settings.render;
+                    settings.layer1[5].renderer = settings.render;
+                    settings.layer1[6].renderer = settings.render;
+                    settings.layer1[7].renderer = settings.render;
+                    settings.layer1[8].renderer = settings.render;
 
                     view.environment.lighting.directShadowsEnabled = true;
                     view.environment.lighting.ambientOcclusionEnabled = true;

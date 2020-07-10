@@ -177,7 +177,7 @@ define([
                 query.returnGeometry = false;
                 query.outFields = [this.settings.buildingIDname];
 
-                this.settings.layer1.queryFeatures(query).then(function (results) {
+                this.settings.layer1[1].queryFeatures(query).then(function (results) {
 
                     if (results.features[0] === undefined) {
                         console.log("Wrong ObjectID");
