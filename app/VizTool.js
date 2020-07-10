@@ -186,6 +186,7 @@ define([
                         console.log(currentResult);
 
                         initData.push(currentResult);
+                        console.log(initData);
 
                         
 

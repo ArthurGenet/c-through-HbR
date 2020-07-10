@@ -50,7 +50,9 @@ define([
                 }
                 for (var k = 0; k < selection.length; k++) {
                     var selectionusage = selection[k].attributes[settings.usagename];
+                    console.log(selectionusage);
                     var selectionarea = selection[k].attributes[settings.areaname];
+                    console.log(selectionarea);
                     for (var m = 0; m < chartData.length; m++) {
                         if (selectionusage === chartData[m].usage) {
                             chartData[m].area += selectionarea;
