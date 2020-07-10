@@ -252,8 +252,9 @@ define([
                         		for(let j = 0; j< this.settings.values.length;j+=1) {
                         			if(this.settings.values[i] == this.settings.values[j]){
                         				console.log("same");
-                        				this.settings.values.splice(j, j);
                         				console.log("supprimé "+this.settings.values[i]+" and "+this.settings.values[j]);
+
+                        				delete this.settings.values[j];
                         			}
                         		}
                         	}
