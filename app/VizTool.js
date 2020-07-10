@@ -199,7 +199,7 @@ define([
                   		
 
                     }.bind(this));}
-
+                    	console.log("ici");
                     // for white renderer
                         var initStats = statsMaker.createChartData(initData, settings, this.view);
                         // for usage renderer
