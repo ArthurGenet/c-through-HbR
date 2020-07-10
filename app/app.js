@@ -248,7 +248,7 @@ define([
                         else{
                         	console.log("else");
                         	this.settings.values = this.settings.values.concat(distinctValues);
-                        	for (let i = 0; i< this.settings.values.length;j+=1){
+                        	for (let i = 0; i< this.settings.values.length;i+=1){
                         		for(let j = 0; j< this.settings.values.length;j+=1) {
                         			if(this.settings.values[i] == this.settings.values[j]){
                         				console.log("same");
