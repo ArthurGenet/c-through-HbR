@@ -242,7 +242,7 @@ define([
                         distinctValues.sort();
                         console.log(i);
                         console.log(distinctValues);
-                        if(i==0){
+                        if(i==1){
                         	this.settings.values = distinctValues;
                         }
                         else{
