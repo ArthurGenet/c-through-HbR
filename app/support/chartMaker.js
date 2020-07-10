@@ -124,13 +124,29 @@ define([
                             chart.pullSlice(dataItem, 0);
  
                             settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            
+                            settings.layer1[1].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[2].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[3].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[4].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[5].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[6].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[7].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            settings.layer1[8].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
                             chart.pullSlice(dataItem, 1);
                             settings.layer1[0].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[1].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[2].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[3].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[4].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[5].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[6].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[7].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            settings.layer1[8].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
                             view.environment.lighting.directShadowsEnabled = false;
                             view.environment.lighting.ambientOcclusionEnabled = false;
