@@ -246,11 +246,13 @@ define([
                         	this.settings.values = distinctValues;
                         }
                         else{
+                        	console.log("else");
                         	this.settings.values = this.settings.values.concat(distinctValues);
                         	for (let i = 0; i< this.settings.values;j+=1){
                         		for(let j = 0; j< this.settings.values;j+=1) {
                         			if(this.settings.values[i] == this.settings.values[j]){
                         				this.settings.values.splice(j, j);
+                        				console.log("supprimé "+this.settings.values[i]+" and "+this.settings.values[j]);
                         			}
                         		}
                         	}
