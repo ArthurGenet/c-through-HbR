@@ -242,7 +242,10 @@ define([
                         distinctValues.sort();
                         this.settings.values = distinctValues;
 
-                        // initiliaze tools menu with state
+                        
+                    }.bind(this))};
+
+                    // initiliaze tools menu with state
                         this.menu = new ToolsMenu({
                             config: this.settings,
                             map: this.scene,
@@ -264,7 +267,6 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                    }.bind(this))};
 
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
