@@ -184,8 +184,13 @@ define([
                     settings.layer1[0].queryFeatures(query).then(function (result) {
                         var currentResult = result.features;
                         console.log(currentResult);
+                        if(initData == []){
+                        	initData = currentResult;
+                        }
+                        else{
+                        	initData.concat(currentResult);
 
-                        initData.push(currentResult);
+                        }
                         console.log(initData);
 
                         
