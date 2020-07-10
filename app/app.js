@@ -240,7 +240,13 @@ define([
                     queryTools.distinctValues(this.settings.layer1[i], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     	console.log("c'est passé");
                         distinctValues.sort();
-                        this.settings.values = this.settings.values.concat(distinctValues);
+                        if(i==0){
+                        	this.settings.values = distinctValues;
+                        }
+                        else{
+                        	this.settings.values = this.settings.values.concat(distinctValues);
+
+                        }
                         if (i==8){
                         	// initiliaze tools menu with state
                         this.menu = new ToolsMenu({
