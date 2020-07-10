@@ -254,7 +254,7 @@ define([
                         				console.log("same");
                         				console.log("supprimé "+this.settings.values[i]+" and "+this.settings.values[j]);
 
-                        				delete this.settings.values[j];
+                        				this.settings.values[j].splice(j,1);
                         			}
                         		}
                         	}
