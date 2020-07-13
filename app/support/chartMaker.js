@@ -102,6 +102,7 @@ define([
 
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
+                            console.log(i);
                             fields.push({
                                 values: settings.values[i],
                                 color: [135, 135, 135, 0.2]
@@ -146,7 +147,7 @@ define([
                     }
                 });
                 console.log(chart);
-                chart.dataProvider.template.paddingTop = 0;
+                chart.dataProvider.paddingTop = 0;
                 chart.dataProvider.template.paddingBottom = 0;
                 chart.dataProvider.template.fontSize = 6;
                 callback("loaded");
