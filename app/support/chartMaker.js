@@ -81,7 +81,7 @@ define([
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "pie",
                     "theme": "light",
-                    "dataProvider": data,
+                    "labels": data,
                     "valueField": "area",
                     "titleField": "usage",
                     "colorField": "color",
@@ -122,7 +122,8 @@ define([
                             selectedvalues.push(fields[k].values);
                             selectedcolor.push(fields[k].color);
                         }
-
+                        console.log(selectedvalues);
+                        console.log(selectedcolor);
 
                         if (dataItem.pulled) {
                             chart.pullSlice(dataItem, 0);
@@ -147,9 +148,9 @@ define([
                     }
                 });
                 console.log(chart);
-                chart.dataProvider.paddingTop = 0;
-                chart.dataProvider.paddingBottom = 0;
-                chart.dataProvider.fontSize = 6;
+                chart.labels.template.paddingTop = 0;
+                chart.labels.template.paddingBottom = 0;
+                chart.labels.template.fontSize = 6;
                 callback("loaded");
 
             },
