@@ -99,7 +99,7 @@ define([
                     "clickSlice": function (dataItem, event) {
 
                         var value = dataItem.title;
-
+                        console.log(settings.values);
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
                             console.log(i);
@@ -117,7 +117,7 @@ define([
 
                         var selectedvalues = [];
                         var selectedcolor = [];
-
+                        console.log(fields);
                         for (var k = 0; k < fields.length; k++) {
                             selectedvalues.push(fields[k].values);
                             selectedcolor.push(fields[k].color);
@@ -148,8 +148,8 @@ define([
                 });
                 console.log(chart);
                 chart.dataProvider.paddingTop = 0;
-                chart.dataProvider.template.paddingBottom = 0;
-                chart.dataProvider.template.fontSize = 6;
+                chart.dataProvider.paddingBottom = 0;
+                chart.dataProvider.fontSize = 6;
                 callback("loaded");
 
             },
