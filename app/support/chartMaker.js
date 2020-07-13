@@ -81,7 +81,7 @@ define([
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "pie",
                     "theme": "light",
-                    "labels": data,
+                    "dataProvider": data,
                     "valueField": "area",
                     "titleField": "usage",
                     "colorField": "color",
@@ -148,9 +148,17 @@ define([
                     }
                 });
                 console.log(chart);
-                chart.labels.template.paddingTop = 0;
-                chart.labels.template.paddingBottom = 0;
-                chart.labels.template.fontSize = 6;
+                // Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries()); 
+pieSeries.dataFields.value = "area";
+pieSeries.dataFields.category = "usage";
+
+
+
+
+pieSeries.labels.template.paddingTop = 0;
+pieSeries.labels.template.paddingBottom = 0;
+pieSeries.labels.template.fontSize = 8;
                 callback("loaded");
 
             },
