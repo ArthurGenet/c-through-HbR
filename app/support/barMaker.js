@@ -38,10 +38,10 @@ define([
     applyRenderer, queryTools
 ) {
         return {
+
             createChartData: function (selection, settings, bins) {
 
                 this.selection = selection;
-
 
                 var chartData = [];
                 var kernel = [];
@@ -123,6 +123,7 @@ define([
 
                 if (bins_new > 9) {
                     color = ["#FBE789", "#E2DD8C", "#C9D38F", "#B0CA93", "#97C096", "#7EB699", "#65AD9D", "#4CA3A0", "#3399A3", "#1B90A7"];
+
                 }
                 else {
                     color = ["#FBE789", "#CED58F", "#A1C495", "#74B29B", "#47A1A1", "#1B90A7"];
@@ -203,33 +204,17 @@ define([
                     var max = event.item.dataContext.subdata[0].max;
                     var min = event.item.dataContext.subdata[0].min;
                     var color = event.item.dataContext.color;
-                    settings.layer1[0].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[1].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[2].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[3].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[4].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[5].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[6].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[7].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
-                    settings.layer1[8].renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
 
+                    settings.layer1.renderer = applyRenderer.createRendererVVbar(min, max, color, settings.areaname);
+                    
                     view.environment.lighting.directShadowsEnabled = false;
                     view.environment.lighting.ambientOcclusionEnabled = false;
                 });
 
                 on(dom.byId("reload"), "click", function (event) {
 
-                    //settings.layer1.renderer = applyRenderer.createRendererVV(selection, settings.areaname);
-                    settings.layer1[0].renderer = settings.render;
-                    settings.layer1[1].renderer = settings.render;
-                    settings.layer1[2].renderer = settings.render;
-                    settings.layer1[3].renderer = settings.render;
-                    settings.layer1[4].renderer = settings.render;
-                    settings.layer1[5].renderer = settings.render;
-                    settings.layer1[6].renderer = settings.render;
-                    settings.layer1[7].renderer = settings.render;
-                    settings.layer1[8].renderer = settings.render;
-
+                    settings.layer1.renderer = applyRenderer.createRendererVV(selection, settings.areaname);
+                    
                     view.environment.lighting.directShadowsEnabled = true;
                     view.environment.lighting.ambientOcclusionEnabled = true;
                 });

@@ -50,9 +50,7 @@ define([
                 }
                 for (var k = 0; k < selection.length; k++) {
                     var selectionusage = selection[k].attributes[settings.usagename];
-                    console.log(selectionusage);
                     var selectionarea = selection[k].attributes[settings.areaname];
-                    console.log(selectionarea);
                     for (var m = 0; m < chartData.length; m++) {
                         if (selectionusage === chartData[m].usage) {
                             chartData[m].area += selectionarea;
@@ -69,6 +67,7 @@ define([
 
 
             createChart: function (view, data, settings, state, callback) {
+
                 var color = this.rgbToHex(settings.color);
 
                 var groupPercentValue = 0;
@@ -125,30 +124,15 @@ define([
                         if (dataItem.pulled) {
                             chart.pullSlice(dataItem, 0);
  
-                            settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[1].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[2].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[3].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[4].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[5].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[6].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[7].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            settings.layer1[8].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-
+                            settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
                             chart.pullSlice(dataItem, 1);
-                            settings.layer1[0].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[1].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[2].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[3].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[4].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[5].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[6].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[7].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            settings.layer1[8].renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+
+                            settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
                             view.environment.lighting.directShadowsEnabled = false;
                             view.environment.lighting.ambientOcclusionEnabled = false;

@@ -41,7 +41,7 @@ define([
 
     "esri/identity/OAuthInfo",
     "esri/identity/IdentityManager",
-
+    
     "esri/WebScene",
     "esri/views/SceneView",
     "esri/layers/SceneLayer",
@@ -71,18 +71,17 @@ define([
     Search,
     ToolsMenu, Welcome, queryTools) {
 
-		var info = new OAuthInfo({
-			        // Swap this ID out with a registered application ID
-			        appId: "BAg8hGLcdC75Aiwe",
-			        // Uncomment the next line and update if using your own portal
-			        // portalUrl: "https://<host>:<port>/arcgis"
-			        // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
-			        // authNamespace: "portal_oauth_inline",
-			        popup: true
-			    });
+        var info = new OAuthInfo({
+                    // Swap this ID out with a registered application ID
+                    appId: "BAg8hGLcdC75Aiwe",
+                    // Uncomment the next line and update if using your own portal
+                    // portalUrl: "https://<host>:<port>/arcgis"
+                    // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
+                    // authNamespace: "portal_oauth_inline",
+                    popup: true
+                });
 
-				esriId.registerOAuthInfos([info]);
-
+                esriId.registerOAuthInfos([info]);
 
         // application settings
         var settings_demo = {
@@ -132,8 +131,6 @@ define([
 
             init: function (settings) {
 
-
-
                 // destroy welcome page when app is started
                 domCtr.destroy("welcome");
 
@@ -144,18 +141,11 @@ define([
                 // get settings from choice on welcome page
                 this.settings = this.getSettingsFromUser(settings);
 
-                console.log("bah bien sur");
-
-                
-			    
-
                 // set portal url
                 esriConfig.portalUrl = this.settings.url;
 
                 // fix CORS issues by adding portal url to cors enabled servers list
                 esriConfig.request.corsEnabledServers.push("http://zurich.maps.arcgis.com");
-
-
 
                 // load scene with portal ID
                 this.scene = new WebScene({
@@ -176,7 +166,14 @@ define([
                 this.view.environment.lighting.ambientOcclusionEnabled = true;
                 this.view.environment.lighting.directShadowsEnabled = true;
 
-
+                // create search widget
+                var searchWidget = new Search({
+                    view: this.view
+                });
+                this.view.ui.add(searchWidget, {
+                    position: "top-right",
+                    index: 2
+                });
 
                 // create home button that leads back to welcome page
                 var home = domCtr.create("div", { className: "button", id: "homeButton", innerHTML: "Home" }, header);
@@ -192,7 +189,6 @@ define([
                     view: this.view
                 });
                 this.view.ui.add(homeWidget, "top-left");
-                
 
                 // wait until view is loaded
                 this.view.when(function () {
@@ -200,71 +196,25 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = [];
-                    for (let i = 0; i<9; i+=1){
-						this.settings.layer1.push(this.scene.layers.getItemAt(i));
-                    }
-                                
-                    console.log(this.settings.layer1);
-                    
-                    //this.settings.layer1.popupTemplate =popup;
+                    this.settings.layer1 = this.scene.layers.getItemAt(0);
 
-                    // create background layer (identical copy of active layer) for highlighting and add it to the scene
-                    
-                    this.settings.layer2 = [];
-                    for (let i = 0; i<9; i+=1){
+                    // create background layer (identical copy of activ layer) for highlighting and add it to the scene
+                    this.settings.layer2 = new SceneLayer({
+                        url: this.settings.layer1.url,
+                        popupEnabled: false
+                    });
+                    this.scene.add(this.settings.layer2);
 
-						this.settings.layer2.push(new SceneLayer({
-	                        url: this.settings.layer1.url,
-	                        popupEnabled: false
-                    }));
+                    this.settings.layer1.visible = true;
+                    this.settings.layer2.visible = false;
 
-                    }
-
-                    
-                    this.settings.render = this.settings.layer1[0].renderer;
-
-
-                    this.scene.add(this.settings.layer2[0]);
-
-                    for (let i = 0; i<9; i+=1){
-                    	this.settings.layer1[i].visible = true;
-
-                    	this.settings.layer2[i].visible = false;
-                    }
-
-                    
-                    console.log("oklm");
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
-                    for (let i = 0; i<9; i+=1){
-                    queryTools.distinctValues(this.settings.layer1[i], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
-                    	console.log("c'est passé");
-                        distinctValues.sort();
-                        console.log(i);
-                        console.log(distinctValues);
-                        if(typeof this.settings.values == "undefined"){
-                        	this.settings.values = distinctValues;
-                        }
-                        else{
-                        	console.log("else");
-                        	this.settings.values = this.settings.values.concat(distinctValues);
-                        	for (let i = 0; i< this.settings.values.length;i+=1){
-                        		for(let j = 0; j< this.settings.values.length;j+=1) {
-                        			if(i == j){
-                        				continue
-                        			}
-                        			else if(this.settings.values[i] == this.settings.values[j]){
-                        				console.log("same");
-                        				console.log("supprimé "+this.settings.values[i]+" and "+this.settings.values[j]);
+                    queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
 
-                        				this.settings.values.splice(j,1);
-                        			}
-                        		}
-                        	}
-                        }
-                        console.log(this.settings.values);
-                        if (i==8){
-                        	// initiliaze tools menu with state
+                        distinctValues.sort();
+                        this.settings.values = distinctValues;
+
+                        // initiliaze tools menu with state
                         this.menu = new ToolsMenu({
                             config: this.settings,
                             map: this.scene,
@@ -286,10 +236,7 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                        }
-                        
-                    }.bind(this))};
-
+                    }.bind(this));
 
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
@@ -297,10 +244,9 @@ define([
 
             },
 
-
             getSettingsFromUser: function (settings) {
                 if (settings === "demo"){
-                    dom.byId("headerTitle").innerHTML = "Gebouwenverkenner: c-through";
+                    dom.byId("headerTitle").innerHTML = "c-through Demo";
                     return settings_demo;
                 }
             }

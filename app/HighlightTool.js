@@ -65,7 +65,7 @@ define([
             },
 
             createUI: function () {
-                this.label = domCtr.create("div", { className: "labelSelect", id: "labelSelect", innerHTML: "Selectie" }, this.container);
+                this.label = domCtr.create("div", { className: "labelSelect", id: "labelSelect", innerHTML: "Selection" }, this.container);
                 this.numberofbuildings = domCtr.create("div", { id: "buildingInfo", innerHTML: "" }, this.container);
 
             },
@@ -92,15 +92,15 @@ define([
             updateUI: function (state) {
 
                 if (state === "city") {
-                    this.label.innerHTML = "Selectie: Stadsniveau";
+                    this.label.innerHTML = "Selection: City Level";
                 }
 
                 if (state === "building") {
-                    this.label.innerHTML = "Selectie: Gebouwniveau";
+                    this.label.innerHTML = "Selection: Building Level";
                 }
 
                 if (state === "multiple buildings") {
-                    this.label.innerHTML = "Selectie: Gebouwniveau";
+                    this.label.innerHTML = "Selection: Multiple Buildings";
                 }
             },
 
@@ -177,7 +177,7 @@ define([
                 query.returnGeometry = false;
                 query.outFields = [this.settings.buildingIDname];
 
-                this.settings.layer1[0].queryFeatures(query).then(function (results) {
+                this.settings.layer1.queryFeatures(query).then(function (results) {
 
                     if (results.features[0] === undefined) {
                         console.log("Wrong ObjectID");

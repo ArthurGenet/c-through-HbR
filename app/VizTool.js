@@ -65,7 +65,6 @@ define([
                 this.filter = params.filterstate;
                 this.settings = params.settings;
                 this.view = params.view;
-                this.render = params.render;
 
                 this.createUI(this.container);
                 this.updateUI(this.viz);
@@ -91,22 +90,22 @@ define([
             },
 
             createUI: function (container) {
-                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualiseren op" }, container);
-                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "geen" }, container);
-                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "gebruiksfunctie" }, container);
-                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "oppervlakte" }, container);
+                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualisation by" }, container);
+                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "none" }, container);
+                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "usage" }, container);
+                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "area" }, container);
 
                 this.statsDiv = domCtr.create("div", { id: "statsDiv", className: "statsDiv" }, container);
                 this.chartDiv = domCtr.create("div", { id: "chartDiv", className: "chartDiv" }, container);
 
 
-                domCtr.create("div", { id: "titleStats", innerHTML: "Statistieken" }, "statsDiv");
-                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Aantal eenheden:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "usage", innerHTML: "<b>Meest voorkomende gebruiksfunctie:       </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Gemiddelde oppervlakte:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Maximale oppervlakte:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Gemiddeld aantal verdiepingen:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Maximaal aantal verdiepingen:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "titleStats", innerHTML: "Statistics" }, "statsDiv");
+                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Number of Units:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "usage", innerHTML: "<b>Most common usage:       </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Average Area:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Max Area:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Average Floor Number:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Max Floor Number:     </b>" }, "statsDiv");
 
             },
 
@@ -134,7 +133,6 @@ define([
                     this.reload = domCtr.create("div", { id: "reload" }, this.container);
                     domCtr.create("img", { className: "reload", src: "img/reload.png", style: "width:25px;height:25px" }, this.reload);
                 }
-
             },
 
             updateVizState: function (state) {
@@ -170,38 +168,23 @@ define([
 
             initialChart: function (settings, callback) {
 
-            	
+                settings.layer1.load().then(function () {
 
-                settings.layer1[0].load().then(function () {
-
-                    var query = settings.layer1[0].createQuery();
+                    var query = settings.layer1.createQuery();
 
                     query.returnGeometry = false;
                     query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
-                    var initData = [];
-                    for (let i = 0; i < settings.layer1.length; i+=1){
-                    settings.layer1[0].queryFeatures(query).then(function (result) {
+                    settings.layer1.queryFeatures(query).then(function (result) {
                         var currentResult = result.features;
-                        console.log(currentResult);
-                        if(initData == []){
-                        	initData = currentResult;
-                        	console.log(initData);
-                        }
-                        else{
-                        	initData = initData.concat(currentResult);
-                        	console.log(initData);
-                        }
-                        console.log(initData);
-                        if (i == settings.layer1.length-1){
-                        	console.log(i);
-                        	console.log("ici");
-                    // for white renderer
-                        var initStats = statsMaker.createChartData(initData, settings, this.view);
+
+                        var initData = currentResult;
+                        // for white renderer
+                        var initStats = statsMaker.createChartData(currentResult, settings, this.view);
                         // for usage renderer
-                        var initUsage = chartMaker.createChartData(initData, settings);
+                        var initUsage = chartMaker.createChartData(currentResult, settings);
                         // for area renderer
-                        var initArea = barMaker.createChartData(initData, settings, 10);
+                        var initArea = barMaker.createChartData(currentResult, settings, 10);
 
                         var initCharts = {
                             stats: initStats,
@@ -209,14 +192,9 @@ define([
                             area: initArea
                         };
 
-                    callback(initData, initCharts);
+                        callback(initData, initCharts);
 
-                        }
-                        
-                  		
-
-                    }.bind(this));}
-
+                    }.bind(this));
 
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
@@ -233,44 +211,26 @@ define([
             setVizCity: function (vizName, highlight, selection) {
                 var settings = this.settings;
 
-                settings.layer1[0].opacity = 0.85;
-                settings.layer2[0].opacity = 0.85;
+                settings.layer1.opacity = 0.8;
+                settings.layer2.opacity = 0.8;
 
                 if (selection !== undefined && selection !== "") {
-                    settings.layer1[0].definitionExpression = selection;
 
-                    //settings.layer2.visible = false;
+                    settings.layer1.definitionExpression = selection;
 
+                    settings.layer2.visible = false;
 
                     if (highlight == undefined) {
-                        settings.layer2[0].visible = false;
+                        settings.layer2.visible = false;
                     } else {
-                        settings.layer2[0].visible = true;
-
-                        settings.layer2[0].renderer = this.settings.render;
-                        settings.layer2[0].definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
-                        settings.layer2[0].opacity = 0.5;
+                        settings.layer2.visible = true;
+                        settings.layer2.renderer = null;
+                        settings.layer2.definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
                     }
                 } else {
-                    settings.layer1[0].visible = true;
-
-                    settings.layer2[0].visible = false;
-
-                    settings.layer1[0].definitionExpression = undefined;
-                    if (vizName === "white"){
-                        settings.layer1[0].renderer = this.settings.render;
-                    }
-                    if(vizName === "usage"){
-                        settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                    }
-     
-                    if (vizName === "area"){
-                        settings.layer1[0].renderer = this.settings.render;
-                    }
-
-                    //settings.layer1.renderer = null;
+                    settings.layer1.definitionExpression = undefined;
+                    settings.layer1.renderer = null;
                 }
-
 
                 // visualization
 
@@ -286,9 +246,7 @@ define([
                 var settings = this.settings;
 
                 if (vizName === "white") {
-                    settings.layer1[0].renderer = this.settings.render;
-                   
-                    //settings.layer1.renderer = null;
+                    settings.layer1.renderer = null;
 
                     domStyle.set(dom.byId("chartDiv"), { "opacity": 0 });
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 1 });
@@ -298,7 +256,7 @@ define([
                     }.bind(this));
                 }
                 if (vizName === "usage") {
-                    settings.layer1[0].renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                    settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                     domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
@@ -308,8 +266,7 @@ define([
                     }.bind(this));
                 }
                 if (vizName === "area") {
-                    //settings.layer1.renderer = applyRenderer.createRendererVV(initData, settings.areaname);
-                    settings.layer1[0].renderer = this.settings.render;
+                    settings.layer1.renderer = applyRenderer.createRendererVV(initData, settings.areaname);
 
                     domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
@@ -321,21 +278,22 @@ define([
             },
 
             changeVisualiationSelection: function (vizName, menu, settings, view) {
+
                 if (this.loadingState !== "busy") {
                     this.menu.setLoadingState("busy");
                 }
 
-                var query = settings.layer1[0].createQuery();
+                var query = settings.layer1.createQuery();
 
                 query.returnGeometry = false;
                 query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
-                settings.layer1[0].queryFeatures(query).then(function (result) {
+                settings.layer1.queryFeatures(query).then(function (result) {
 
                     var selection = result.features;
 
                     if (vizName === "white") {
-                        //settings.layer1.renderer = applyRenderer.createSimpleRenderer();
+                        settings.layer1.renderer = applyRenderer.createSimpleRenderer();
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 0 });
                         domStyle.set(dom.byId("statsDiv"), { "opacity": 1 });
@@ -346,7 +304,7 @@ define([
                         });
                     }
                     if (vizName === "usage") {
-                        //settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                        settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                         domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
@@ -355,14 +313,14 @@ define([
                         chartMaker.createChart(view, chartData, settings, "building", function (state) {
                             menu.setLoadingState(state);
                         });
-                        var data = statsMaker.createChartData(selection, settings);
 
+                        var data = statsMaker.createChartData(selection, settings);
                         statsMaker.createChart(data, function (state) {
                             menu.setLoadingState(state);
                         });
                     }
                     if (vizName === "area") {
-                        //settings.layer1.renderer = applyRenderer.createRendererVV(selection, settings.areaname);
+                        settings.layer1.renderer = applyRenderer.createRendererVV(selection, settings.areaname);
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
                         domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });

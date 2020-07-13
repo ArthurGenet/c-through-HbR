@@ -105,8 +105,7 @@ define([
             },
 
             updateUI: function (state) {
-                
-                
+
                 if (state.name === "none") {
                     domCtr.destroy(dom.byId("filter-floors"));
                     domCtr.destroy(dom.byId("filter-usage"));
@@ -115,12 +114,11 @@ define([
                     domCtr.destroy(dom.byId("AreaMinText"));
 
                     this.createFilterFloorUI(this.container);
-
                     this.createFilterUsageUI(this.container);
-
                     this.createFilterAreaUI(this.container);
 
                 } else {
+
                     if (state.floorFeatures !== undefined) {
                         if (state.usageFeatures !== undefined) {
                             if (state.areaFeatures !== undefined) {
@@ -178,11 +176,11 @@ define([
 
             createUI: function (container) {
 
-                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter op" }, container);
-                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Minimale oppervlakte" }, container);
-                domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Maximale oppervlakte" }, container);
+                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter by" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Min Area" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Max Area" }, container);
 
-                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Opnieuw instellen" }, container);
+                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Reset" }, container);
 
                 this.createFilterFloorUI(this.container);
                 this.createFilterUsageUI(this.container);
@@ -197,11 +195,12 @@ define([
             },
 
             createFilterFloorUI: function (container) {
+
                 this.LevelFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-floors" }, container);
-                queryTools.distinctValues(this.settings.layer1[0], this.settings.floorname, this.settings.OIDname, function (distinctValues) {
+
+                queryTools.distinctValues(this.settings.layer1, this.settings.floorname, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues = [-1,0,1,2,3,4,5,6,7,8,9];
-                    distinctValues.unshift("Selecteer verdieping");
+                    distinctValues.unshift("Select Floor");
 
                     this.setDropdown("FloorLevel", distinctValues, this.LevelFilterContainer, function (floorSelector) {
                         this.floorSelector = floorSelector;
@@ -216,9 +215,9 @@ define([
             createFilterUsageUI: function (container) {
                 this.UsageFilterContainer = domCtr.create("div", { className: "FilterLabel", id: "filter-usage" }, container);
 
-                queryTools.distinctValues(this.settings.layer1[0], this.settings.usagename, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Selecteer gebruiksfunctie");
+                    distinctValues.unshift("Select Usage");
 
                     this.setDropdown("Usage", distinctValues, this.UsageFilterContainer, function (usageSelector) {
                         this.usageSelector = usageSelector;
@@ -243,7 +242,7 @@ define([
 
                 var max, min;
 
-                queryTools.distinctValues(this.settings.layer1[0], this.settings.areaname, this.settings.OIDname, function (distinctValues) {
+                queryTools.distinctValues(this.settings.layer1, this.settings.areaname, this.settings.OIDname, function (distinctValues) {
 
                     distinctValues.sort(function (a, b) {
                         return a - b;
@@ -262,7 +261,7 @@ define([
                     this.sliderDomNode = domCtr.create("div", {}, filterAreaWrapper);
 
                     if (min === max) {
-                        //alert("No area range can be displayed because there is only one feature filtered.");
+                        alert("No area range can be displayed because there is only one feature filtered.");
 
                     } else {
 
