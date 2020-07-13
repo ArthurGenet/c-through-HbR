@@ -141,7 +141,9 @@ define([
                         "enabled": true
                     }
                 });
-
+                chart.dataProvider.labels.template.paddingTop = 0;
+                chart.dataProvider.labels.template.paddingBottom = 0;
+                chart.dataProvider.labels.template.fontSize = 10;
                 callback("loaded");
 
             },
