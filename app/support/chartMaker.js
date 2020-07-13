@@ -76,6 +76,8 @@ define([
                     groupPercentValue = "2";
                 }
 
+                console.log(data);
+
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "pie",
                     "theme": "light",
@@ -144,9 +146,9 @@ define([
                     }
                 });
                 console.log(chart);
-                chart.labels.template.paddingTop = 0;
-                chart.labels.template.paddingBottom = 0;
-                chart.labels.template.fontSize = 6;
+                chart.dataProvider.template.paddingTop = 0;
+                chart.dataProvider.template.paddingBottom = 0;
+                chart.dataProvider.template.fontSize = 6;
                 callback("loaded");
 
             },
