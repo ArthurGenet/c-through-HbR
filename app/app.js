@@ -197,7 +197,8 @@ define([
 
                     // retrieve active layer from webscene
                     this.settings.layer1 = this.scene.layers.getItemAt(0);
-
+                    console.log(this.settings.layer1);
+                    console.log(this.settings.layer1.title);
                     console.log(this.settings.layer1.fields);
 
                     // create background layer (identical copy of activ layer) for highlighting and add it to the scene
