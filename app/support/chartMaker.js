@@ -148,17 +148,19 @@ define([
                     }
                 });
                 console.log(chart);
+                console.log(chart.type);
+                console.log(chart.series);
                 // Add and configure Series
-var pieSeries = chart.series.push(new am4charts.PieSeries()); 
-pieSeries.dataFields.value = "area";
-pieSeries.dataFields.category = "usage";
+                var pieSeries = chart.series.push(new am4charts.PieSeries()); 
+                pieSeries.dataFields.value = "area";
+                pieSeries.dataFields.category = "usage";
 
 
 
 
-pieSeries.labels.template.paddingTop = 0;
-pieSeries.labels.template.paddingBottom = 0;
-pieSeries.labels.template.fontSize = 8;
+                pieSeries.labels.template.paddingTop = 0;
+                pieSeries.labels.template.paddingBottom = 0;
+                pieSeries.labels.template.fontSize = 8;
                 callback("loaded");
 
             },
