@@ -67,7 +67,6 @@ define([
 
 
             createChart: function (view, data, settings, state, callback) {
-
                 var color = this.rgbToHex(settings.color);
 
                 var groupPercentValue = 0;
@@ -131,7 +130,6 @@ define([
 
                         } else {
                             chart.pullSlice(dataItem, 1);
-
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
                             view.environment.lighting.directShadowsEnabled = false;

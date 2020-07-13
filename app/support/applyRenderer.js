@@ -44,7 +44,7 @@ define([
                     symbol: new MeshSymbol3D({
                         symbolLayers: [
                             new FillSymbol3DLayer({
-                                material: { color: "#3399FF" }
+                                material: { color: "grey" }
                             })
                         ]
                     })
@@ -165,8 +165,9 @@ define([
             },
 
             createRendererVVbar: function (min, max, color, fieldname) {
-
+                
                 var defaultcolor = [135, 135, 135, 0.2];
+
 
                 return new UniqueValueRenderer({
                     defaultSymbol: new MeshSymbol3D({

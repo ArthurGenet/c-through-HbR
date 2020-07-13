@@ -77,7 +77,7 @@ define([
                 }
                 
                 if (usageAreaSum === 0){
-                    chartData.mostCommonUsage.usage = "0ther";
+                    chartData.mostCommonUsage.usage = "Andere";
                 } else{
                     chartData.mostCommonUsage = usageData[usageData.length - 1];
                 }
@@ -154,13 +154,13 @@ define([
 
             createChart: function(data, callback){
 
-                dom.byId("buildingInfo").innerHTML = "Number of Buildings: " + data.numberofBuildings;
-                dom.byId("numberofunits").innerHTML = "<b>Number of Units:</b>      " + data.numberofUnits;
-                dom.byId("usage").innerHTML = "<b>Most common usage:</b>        " + data.mostCommonUsage.usage;
-                dom.byId("averagearea").innerHTML = "<b>Average Area:</b>       " + data.averageArea + " m2";
-                dom.byId("maxarea").innerHTML = "<b>Max Area:</b>       " + data.areaMax + " m2";
-                dom.byId("averagefloor").innerHTML = "<b>Average Floor Number:</b>      " + data.averageFloor;
-                dom.byId("maxfloor").innerHTML = "<b>Max Floor Number:</b>      " + data.floorMax;
+                dom.byId("buildingInfo").innerHTML = "Aantal gebouwen: " + data.numberofBuildings;
+                dom.byId("numberofunits").innerHTML = "<b>Aantal eenheden:</b>      " + data.numberofUnits;
+                dom.byId("usage").innerHTML = "<b>Meest voorkomende gebruiksfunctie:</b>        " + data.mostCommonUsage.usage;
+                dom.byId("averagearea").innerHTML = "<b>Gemiddelde oppervlakte:</b>       " + data.averageArea + " m2";
+                dom.byId("maxarea").innerHTML = "<b>Maximale oppervlakte:</b>       " + data.areaMax + " m2";
+                dom.byId("averagefloor").innerHTML = "<b>Gemiddeld aantal verdiepingen:</b>      " + data.averageFloor;
+                dom.byId("maxfloor").innerHTML = "<b>Maximaal aantal verdiepingen:</b>      " + data.floorMax;
 
                 callback("loaded");
 

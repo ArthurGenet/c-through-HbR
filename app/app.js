@@ -41,7 +41,7 @@ define([
 
     "esri/identity/OAuthInfo",
     "esri/identity/IdentityManager",
-    
+
     "esri/WebScene",
     "esri/views/SceneView",
     "esri/layers/SceneLayer",
@@ -134,7 +134,6 @@ define([
                     [254, 224, 182, 1]
                 ]
         };
-
         return declare(null, {
 
             constructor: function () {
@@ -178,14 +177,7 @@ define([
                 this.view.environment.lighting.ambientOcclusionEnabled = true;
                 this.view.environment.lighting.directShadowsEnabled = true;
 
-                // create search widget
-                var searchWidget = new Search({
-                    view: this.view
-                });
-                this.view.ui.add(searchWidget, {
-                    position: "top-right",
-                    index: 2
-                });
+
 
                 // create home button that leads back to welcome page
                 var home = domCtr.create("div", { className: "button", id: "homeButton", innerHTML: "Home" }, header);
@@ -201,6 +193,7 @@ define([
                     view: this.view
                 });
                 this.view.ui.add(homeWidget, "top-left");
+                
 
                 // wait until view is loaded
                 this.view.when(function () {
@@ -208,24 +201,60 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.getItemAt(2);
-                    console.log(this.settings.layer1);
-                    console.log(this.settings.layer1.title);
-                    console.log(this.settings.layer1.fields);
+                    this.settings.layer1 = this.scene.layers.getItemAt(0);
 
-                    // create background layer (identical copy of activ layer) for highlighting and add it to the scene
+                    var popup = {
+                        title: "Building Information", // the title of the popup
+                        "content": [{
+                            "type": "fields",
+                            "fieldInfos": [
+                                {
+                                  "fieldName": this.settings.usagename,
+                                  "label": "Usage Name",
+                                  "isEditable": true,
+                                  "tooltip": "",
+                                  "visible": true,
+                                  "format": null,
+                                  "stringFieldOption": "text-box"
+                                },
+                                {
+                                  "fieldName": this.settings.floorname,
+                                  "label": "Floor Level",
+                                  "isEditable": true,
+                                  "tooltip": "",
+                                  "visible": true,
+                                  "format": null,
+                                  "stringFieldOption": "text-box"
+                                },
+                                {
+                                  "fieldName": this.settings.areaname,
+                                  "label": "Area in m2",
+                                  "isEditable": true,
+                                  "tooltip": "",
+                                  "visible": true,
+                                  "format": null,
+                                  "stringFieldOption": "text-box"
+                                }
+                                
+                            ]
+                        }]
+                    }
+                    this.settings.layer1.popupTemplate =popup;
+                    // create background layer (identical copy of active layer) for highlighting and add it to the scene
                     this.settings.layer2 = new SceneLayer({
                         url: this.settings.layer1.url,
                         popupEnabled: false
                     });
+                    this.settings.render = this.settings.layer1.renderer;
+
+
                     this.scene.add(this.settings.layer2);
 
                     this.settings.layer1.visible = true;
-                    this.settings.layer2.visible = false;
 
+                    this.settings.layer2.visible = false;
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
                     queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
-
                         distinctValues.sort();
                         this.settings.values = distinctValues;
 
@@ -261,7 +290,7 @@ define([
 
             getSettingsFromUser: function (settings) {
                 if (settings === "demo"){
-                    dom.byId("headerTitle").innerHTML = "c-through Demo";
+                    dom.byId("headerTitle").innerHTML = "Gebouwenverkenner: c-through";
                     return settings_demo;
                 }
             }

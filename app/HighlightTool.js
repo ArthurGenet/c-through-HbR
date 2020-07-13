@@ -65,7 +65,7 @@ define([
             },
 
             createUI: function () {
-                this.label = domCtr.create("div", { className: "labelSelect", id: "labelSelect", innerHTML: "Selection" }, this.container);
+                this.label = domCtr.create("div", { className: "labelSelect", id: "labelSelect", innerHTML: "Selectie" }, this.container);
                 this.numberofbuildings = domCtr.create("div", { id: "buildingInfo", innerHTML: "" }, this.container);
 
             },
@@ -92,15 +92,15 @@ define([
             updateUI: function (state) {
 
                 if (state === "city") {
-                    this.label.innerHTML = "Selection: City Level";
+                    this.label.innerHTML = "Selectie: Stadsniveau";
                 }
 
                 if (state === "building") {
-                    this.label.innerHTML = "Selection: Building Level";
+                    this.label.innerHTML = "Selectie: Gebouwniveau";
                 }
 
                 if (state === "multiple buildings") {
-                    this.label.innerHTML = "Selection: Multiple Buildings";
+                    this.label.innerHTML = "Selectie: Gebouwniveau";
                 }
             },
 
