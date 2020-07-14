@@ -108,7 +108,7 @@ define([
 				pieSeries.labels.template.events.on("visibilitychanged", hideSmall);
 
 				function hideSmall(ev) {
-				  if (ev.target.dataItem.values.value.percent < 4) {
+				  if (ev.target.dataFields.values.value.percent < 4) {
 				    ev.target.hide();
 				  }
 				  else {
