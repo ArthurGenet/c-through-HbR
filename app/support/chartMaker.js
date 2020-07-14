@@ -122,7 +122,7 @@ define([
 				grouper.clickBehavior = "zoom";
 
 				chart.addListener("clickSlice", handleClick);
-				
+
 				function handleClick(event)
 		        {
 						var value = dataItem.title;
@@ -167,7 +167,7 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = false;
                         }
 
-                    }		        }
+                    }		        
 
 
                 callback("loaded");
