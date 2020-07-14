@@ -121,10 +121,10 @@ define([
 				grouper.groupName = "Andere";
 				grouper.clickBehavior = "zoom";
 
-				chart.addListener("clickSlice", handleClick);
 
-				function handleClick(event)
-		        {
+	
+						
+                    pieSeries.slices.template.events.on("hit", (event) => {
 						var value = dataItem.title;
 
                         var fields = [];
@@ -167,7 +167,8 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = false;
                         }
 
-                    }		        
+                    
+					});	        
 
 
                 callback("loaded");
