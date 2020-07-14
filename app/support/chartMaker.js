@@ -87,8 +87,7 @@ define([
                 chart.valueField = "area";
                 chart.titleField = "usage";
                 chart.startRadius = 80;
-                chart.validateData();
-
+                chart.data = data;
 
                 console.log(chart);
                 console.log(chart.type);
@@ -112,7 +111,7 @@ define([
 				grouper.groupName = "Andere";
 				grouper.clickBehavior = "zoom";
 
-				
+
 	
 						
                     pieSeries.slices.template.events.on("hit", (event) => {
