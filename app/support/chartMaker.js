@@ -119,6 +119,7 @@ define([
 						
                     pieSeries.slices.template.events.on("hit", (event) => {
 						var value = dataItem.title;
+						console.log(value);
 
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
@@ -143,7 +144,7 @@ define([
                         }
 
 
-                        if (dataItem.pulled) {
+                        if (data.pulled) {
                             //chart.pullSlice(dataItem, 0);
  							console.log("pull");
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
