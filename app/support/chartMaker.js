@@ -113,7 +113,7 @@ define([
 	
 						
                     pieSeries.slices.template.events.on("hit", (event) => {
-						var value = dataItem.title;
+						var value = data.title;
 
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
@@ -138,8 +138,8 @@ define([
                         }
 
 
-                        if (dataItem.pulled) {
-                            chart.pullSlice(dataItem, 0);
+                        if (data.pulled) {
+                            chart.pullSlice(data, 0);
  
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                             
@@ -147,7 +147,7 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
-                            chart.pullSlice(dataItem, 1);
+                            chart.pullSlice(data, 1);
 
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
