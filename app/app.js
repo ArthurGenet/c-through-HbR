@@ -85,7 +85,7 @@ define([
 
         // application settings
         var settings_demo = {
-            name: "Begin",
+            name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
             webscene: "cd3d61e4b4f34a1bbee92c211e18da33",   // portal item ID of the webscene
             usagename: "ROOM_NAME",                             // usage attribute (string)
