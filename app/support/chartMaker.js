@@ -102,19 +102,7 @@ define([
                 pieSeries.labels.template.paddingBottom = 0;
                 pieSeries.labels.template.fontSize = 10;
 
-                pieSeries.ticks.template.events.on("ready", hideSmall);
-				pieSeries.ticks.template.events.on("visibilitychanged", hideSmall);
-				pieSeries.labels.template.events.on("ready", hideSmall);
-				pieSeries.labels.template.events.on("visibilitychanged", hideSmall);
-
-				function hideSmall(ev) {
-				  if (ev.target.dataFields.values.value.percent < 4) {
-				    ev.target.hide();
-				  }
-				  else {
-				    ev.target.show();
-				  }
-				}
+                
 
                 var grouper = pieSeries.plugins.push(new am4plugins_sliceGrouper.SliceGrouper());
 				grouper.threshold = 4;
