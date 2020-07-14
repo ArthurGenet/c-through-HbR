@@ -81,7 +81,7 @@ define([
                 
 
 
-                var chart = am4core.create("chartdiv", am4charts.PieChart);
+                var chart = am4core.create("chartDiv", am4charts.PieChart);
                 chart.data = data;
 
 
