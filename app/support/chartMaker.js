@@ -82,7 +82,7 @@ define([
 
 
                 var chart = am4core.create("chartDiv", am4charts.PieChart);
-                chart.data = data;
+                chart.dataItem = data;
 
 
 
@@ -113,7 +113,7 @@ define([
 	
 						
                     pieSeries.slices.template.events.on("hit", (event) => {
-						var value = data.title;
+						var value = dataItem.title;
 
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
@@ -138,8 +138,8 @@ define([
                         }
 
 
-                        if (data.pulled) {
-                            chart.pullSlice(data, 0);
+                        if (dataItem.pulled) {
+                            chart.pullSlice(dataItem, 0);
  
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                             
@@ -147,7 +147,7 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
-                            chart.pullSlice(data, 1);
+                            chart.pullSlice(dataItem, 1);
 
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
