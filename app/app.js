@@ -85,7 +85,7 @@ define([
 
         // application settings
         var settings_demo = {
-            name: "Demo",
+            name: "Begin",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
             webscene: "cd3d61e4b4f34a1bbee92c211e18da33",   // portal item ID of the webscene
             usagename: "ROOM_NAME",                             // usage attribute (string)
@@ -621,7 +621,7 @@ define([
 
             getSettingsFromUser: function (settings) {
                 if (settings === "demo"){
-                    dom.byId("headerTitle").innerHTML = "c-through Demo";
+                    dom.byId("headerTitle").innerHTML = "Gebouwenverkenner: c-through HbR";
                     return settings_demo;
                 }
             }

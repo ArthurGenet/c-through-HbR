@@ -90,22 +90,22 @@ define([
             },
 
             createUI: function (container) {
-                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualisation by" }, container);
-                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "none" }, container);
-                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "usage" }, container);
-                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "area" }, container);
+                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualiseren op" }, container);
+                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "geen" }, container);
+                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "gebruiksfunctie" }, container);
+                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "oppervlake" }, container);
 
                 this.statsDiv = domCtr.create("div", { id: "statsDiv", className: "statsDiv" }, container);
                 this.chartDiv = domCtr.create("div", { id: "chartDiv", className: "chartDiv" }, container);
 
 
-                domCtr.create("div", { id: "titleStats", innerHTML: "Statistics" }, "statsDiv");
-                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Number of Units:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "usage", innerHTML: "<b>Most common usage:       </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Average Area:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Max Area:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Average Floor Number:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Max Floor Number:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "titleStats", innerHTML: "Statistieken" }, "statsDiv");
+                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Aantal eenheden:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "usage", innerHTML: "<b>Meest voorkomende gebruiksfunctie:       </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Gemiddelde oppervlakte:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Maximale oppervlakte:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Gemiddeld aantal verdiepingen:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Maximaal aantal verdiepingen:     </b>" }, "statsDiv");
 
             },
 

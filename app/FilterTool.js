@@ -176,11 +176,11 @@ define([
 
             createUI: function (container) {
 
-                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter by" }, container);
-                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Min Area" }, container);
-                domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Max Area" }, container);
+                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter op" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Minimale oppervlakte" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Maximale oppervlakte" }, container);
 
-                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Reset" }, container);
+                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Opnieuw instellen" }, container);
 
                 this.createFilterFloorUI(this.container);
                 this.createFilterUsageUI(this.container);
@@ -200,7 +200,7 @@ define([
 
                 queryTools.distinctValues(this.settings.layer1, this.settings.floorname, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Select Floor");
+                    distinctValues.unshift("Selecteer verdieping");
 
                     this.setDropdown("FloorLevel", distinctValues, this.LevelFilterContainer, function (floorSelector) {
                         this.floorSelector = floorSelector;
@@ -217,7 +217,7 @@ define([
 
                 queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Select Usage");
+                    distinctValues.unshift("Selecteer Gebruiksfunctie");
 
                     this.setDropdown("Usage", distinctValues, this.UsageFilterContainer, function (usageSelector) {
                         this.usageSelector = usageSelector;
