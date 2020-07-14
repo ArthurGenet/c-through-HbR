@@ -78,75 +78,15 @@ define([
 
                 console.log(data);
 
-                var chart = AmCharts.makeChart("chartDiv", {
-                    "type": "pie",
-                    "theme": "light",
-                    "dataProvider": data,
-                    "valueField": "area",
-                    "titleField": "usage",
-                    "colorField": "color",
-                    "groupPercent": groupPercentValue,
-                    "startRadius": 70,
-                    "fontSize": 12,
-                    "fontFamily": "Avenir LT W01 65 Medium",
-                    "radius": 70,
-                    "marginTop": 100,
-                    "pieAlpha": 0.8,
-                    "sequencedAnimation": true,
-                    "balloon": {
-                        "fixedPosition": true
-                    },
-                    "clickSlice": function (dataItem, event) {
+                
 
-                        var value = dataItem.title;
-                        console.log(settings.values);
-                        var fields = [];
-                        for (var i = 0; i < settings.values.length; i++) {
-                            console.log(i);
-                            fields.push({
-                                values: settings.values[i],
-                                color: [135, 135, 135, 0.2]
-                            });
-                        }
 
-                        for (var j = 0; j < fields.length; j++) {
-                            if (fields[j].values === value) {
-                                fields[j].color = color[j];
-                            }
-                        }
+                var chart = am4core.create("chartdiv", am4charts.PieChart);
+                chart.data = data;
 
-                        var selectedvalues = [];
-                        var selectedcolor = [];
-                        console.log(fields);
-                        for (var k = 0; k < fields.length; k++) {
-                            selectedvalues.push(fields[k].values);
-                            selectedcolor.push(fields[k].color);
-                        }
-                        console.log(selectedvalues);
-                        console.log(selectedcolor);
 
-                        if (dataItem.pulled) {
-                            chart.pullSlice(dataItem, 0);
- 
-                            settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            
-                            view.environment.lighting.directShadowsEnabled = true;
-                            view.environment.lighting.ambientOcclusionEnabled = true;
 
-                        } else {
-                            chart.pullSlice(dataItem, 1);
 
-                            settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
-                            
-                            view.environment.lighting.directShadowsEnabled = false;
-                            view.environment.lighting.ambientOcclusionEnabled = false;
-                        }
-
-                    }.bind(this),
-                    "export": {
-                        "enabled": true
-                    }
-                });
                 console.log(chart);
                 console.log(chart.type);
                 console.log(chart.series);
