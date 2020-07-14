@@ -101,6 +101,11 @@ define([
                 pieSeries.labels.template.paddingTop = 0;
                 pieSeries.labels.template.paddingBottom = 0;
                 pieSeries.labels.template.fontSize = 8;
+
+                var grouper = pieSeries.plugins.push(new am4plugins_sliceGrouper.SliceGrouper());
+				grouper.threshold = 15;
+				grouper.groupName = "Andere";
+				grouper.clickBehavior = "zoom";
                 callback("loaded");
 
             },
