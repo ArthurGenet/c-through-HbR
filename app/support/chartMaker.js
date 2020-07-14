@@ -145,13 +145,14 @@ define([
 
                         if (dataItem.pulled) {
                             //chart.pullSlice(dataItem, 0);
- 
+ 							console.log("pull");
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                             
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
+                        	console.log("normal");
                             //chart.pullSlice(dataItem, 1);
 
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
