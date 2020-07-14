@@ -100,7 +100,7 @@ define([
 
                 pieSeries.labels.template.paddingTop = 0;
                 pieSeries.labels.template.paddingBottom = 0;
-                pieSeries.labels.template.fontSize = 8;
+                pieSeries.labels.template.fontSize = 10;
 
                 pieSeries.ticks.template.events.on("ready", hideSmall);
 				pieSeries.ticks.template.events.on("visibilitychanged", hideSmall);
@@ -108,7 +108,7 @@ define([
 				pieSeries.labels.template.events.on("visibilitychanged", hideSmall);
 
 				function hideSmall(ev) {
-				  if (ev.target.dataItem.values.value.percent < 5) {
+				  if (ev.target.dataItem.values.value.percent < 4) {
 				    ev.target.hide();
 				  }
 				  else {
@@ -120,7 +120,59 @@ define([
 				grouper.threshold = 4;
 				grouper.groupName = "Andere";
 				grouper.clickBehavior = "zoom";
+
+				chart.addListener("clickSlice", handleClick);
+				
+				function handleClick(event)
+		        {
+						var value = dataItem.title;
+
+                        var fields = [];
+                        for (var i = 0; i < settings.values.length; i++) {
+                            fields.push({
+                                values: settings.values[i],
+                                color: [135, 135, 135, 0.2]
+                            });
+                        }
+
+                        for (var j = 0; j < fields.length; j++) {
+                            if (fields[j].values === value) {
+                                fields[j].color = color[j];
+                            }
+                        }
+
+                        var selectedvalues = [];
+                        var selectedcolor = [];
+
+                        for (var k = 0; k < fields.length; k++) {
+                            selectedvalues.push(fields[k].values);
+                            selectedcolor.push(fields[k].color);
+                        }
+
+
+                        if (dataItem.pulled) {
+                            chart.pullSlice(dataItem, 0);
+ 
+                            settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            
+                            view.environment.lighting.directShadowsEnabled = true;
+                            view.environment.lighting.ambientOcclusionEnabled = true;
+
+                        } else {
+                            chart.pullSlice(dataItem, 1);
+
+                            settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            
+                            view.environment.lighting.directShadowsEnabled = false;
+                            view.environment.lighting.ambientOcclusionEnabled = false;
+                        }
+
+                    }		        }
+
+
                 callback("loaded");
+
+
 
             },
 
