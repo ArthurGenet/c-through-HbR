@@ -83,7 +83,7 @@ define([
 
                 var chart = am4core.create("chartDiv", am4charts.PieChart);
                 chart.dataProvider = data;
-                chart.dataItem = data;
+                dataItem = data;
                 chart.type = "pie";
                 chart.valueField = "area";
                 chart.titleField = "usage";
