@@ -102,8 +102,22 @@ define([
                 pieSeries.labels.template.paddingBottom = 0;
                 pieSeries.labels.template.fontSize = 8;
 
+                pieSeries.ticks.template.events.on("ready", hideSmall);
+				pieSeries.ticks.template.events.on("visibilitychanged", hideSmall);
+				pieSeries.labels.template.events.on("ready", hideSmall);
+				pieSeries.labels.template.events.on("visibilitychanged", hideSmall);
+
+				function hideSmall(ev) {
+				  if (ev.target.dataItem.values.value.percent < 5) {
+				    ev.target.hide();
+				  }
+				  else {
+				    ev.target.show();
+				  }
+				}
+
                 var grouper = pieSeries.plugins.push(new am4plugins_sliceGrouper.SliceGrouper());
-				grouper.threshold = 15;
+				grouper.threshold = 4;
 				grouper.groupName = "Andere";
 				grouper.clickBehavior = "zoom";
                 callback("loaded");
