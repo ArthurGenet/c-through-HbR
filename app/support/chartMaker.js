@@ -83,11 +83,14 @@ define([
 
                 var chart = am4core.create("chartDiv", am4charts.PieChart);
                 chart.dataProvider = data;
+                chart.dataItem = data;
                 chart.type = "pie";
                 chart.valueField = "area";
                 chart.titleField = "usage";
                 chart.startRadius = 80;
                 chart.data = data;
+                chart.startRadius = am4core.percent(65);;
+
 
                 console.log(chart);
                 console.log(chart.type);
