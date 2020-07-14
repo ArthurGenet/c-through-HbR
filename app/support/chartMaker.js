@@ -81,45 +81,27 @@ define([
                 
 
 
-                var chart = am4core.create("chartDiv", am4charts.PieChart);
-                chart.dataProvider = data;
-                dataItem = data;
-                chart.type = "pie";
-                chart.valueField = "area";
-                chart.titleField = "usage";
-                chart.startRadius = 80;
-                chart.data = data;
-                chart.startRadius = am4core.percent(40);;
+                var chart = AmCharts.makeChart("chartDiv", {
+                    "type": "pie",
+                    "theme": "light",
+                    "dataProvider": data,
+                    "valueField": "area",
+                    "titleField": "usage",
+                    "colorField": "color",
+                    "groupPercent": groupPercentValue,
+                    "startRadius": 80,
+                    "fontSize": 12,
+                    "fontFamily": "Avenir LT W01 65 Medium",
+                    "radius": 70,
+                    "marginTop": 100,
+                    "pieAlpha": 0.8,
+                    "sequencedAnimation": true,
+                    "balloon": {
+                        "fixedPosition": true
+                    },
+                    "clickSlice": function (dataItem, event) {
 
-
-                console.log(chart);
-                console.log(chart.type);
-                console.log(chart.series);
-                // Add and configure Series
-                var pieSeries = chart.series.push(new am4charts.PieSeries()); 
-                pieSeries.dataFields.value = "area";
-                pieSeries.dataFields.category = "usage";
-
-
-
-
-                pieSeries.labels.template.paddingTop = 0;
-                pieSeries.labels.template.paddingBottom = 0;
-                pieSeries.labels.template.fontSize = 10;
-
-               	
-
-                var grouper = pieSeries.plugins.push(new am4plugins_sliceGrouper.SliceGrouper());
-				grouper.threshold = 4;
-				grouper.groupName = "Andere";
-				grouper.clickBehavior = "zoom";
-
-
-	
-						
-                    pieSeries.slices.template.events.on("hit", (event) => {
-						var value = dataItem.title;
-						console.log(value);
+                        var value = dataItem.title;
 
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
@@ -144,17 +126,16 @@ define([
                         }
 
 
-                        if (data.pulled) {
-                            //chart.pullSlice(dataItem, 0);
- 							console.log("pull");
+                        if (dataItem.pulled) {
+                            chart.pullSlice(dataItem, 0);
+ 
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                             
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
-                        	console.log("normal");
-                            //chart.pullSlice(dataItem, 1);
+                            chart.pullSlice(dataItem, 1);
 
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
@@ -162,16 +143,15 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = false;
                         }
 
-                    
-					});	        
-
+                    }.bind(this),
+                    "export": {
+                        "enabled": true
+                    }
+                });
 
                 callback("loaded");
 
-
-
             },
-
             rgbToHex: function (color) {
 
                 var colorhex = [];
