@@ -89,7 +89,7 @@ define([
                 chart.titleField = "usage";
                 chart.startRadius = 80;
                 chart.data = data;
-                chart.startRadius = am4core.percent(65);;
+                chart.startRadius = am4core.percent(40);;
 
 
                 console.log(chart);
@@ -144,7 +144,7 @@ define([
 
 
                         if (dataItem.pulled) {
-                            chart.pullSlice(dataItem, 0);
+                            //chart.pullSlice(dataItem, 0);
  
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
                             
@@ -152,7 +152,7 @@ define([
                             view.environment.lighting.ambientOcclusionEnabled = true;
 
                         } else {
-                            chart.pullSlice(dataItem, 1);
+                            //chart.pullSlice(dataItem, 1);
 
                             settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
                             
