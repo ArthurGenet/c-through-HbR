@@ -76,7 +76,7 @@ define([
                      toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
                      window.addEventListener("resize", function(){
                          windowHitht = document.documentElement.clientHeight;
-                         toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
+                         //toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
                          toolsMenu.style.height = windowHitht - 50 + "px";
 
                      });
@@ -144,7 +144,7 @@ define([
 
                 this.state.combinedExpression = this.calculateCombinedExpression(this.settings);
                 this.setVizState(this.state.viz, this.state.filter, state, this.state.combinedExpression);
-                this.filterTool.setFilterState(this.state);
+                //this.filterTool.setFilterState(this.state);
             },
 
             setVizState: function (state) {
@@ -159,9 +159,14 @@ define([
                     if (mode == "filter") {
                         this.setHighlightState(this.state.highlight);
                     }
-                    if (mode == "highlight") {
+                    //if (mode == "highlight") {
                         this.setHighlightState({ name: "city", expression: undefined });
-                    }
+                    //}
+
+                    this.filterTool.setFilterState(this.state);
+
+                     dom.byId("buildingInfo").innerHTML = "Number of Buildings: 33";
+
                 }.bind(this));
             },
 
