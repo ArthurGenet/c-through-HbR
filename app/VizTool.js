@@ -218,7 +218,7 @@ define([
                 console.log(highlight);
                 if (selection !== undefined && selection !== "") {
 
-                    settings.layer1.definitionExpression = settings.buildingIDname + " = "+highlight;
+                    settings.layer1.definitionExpression = "Complexnummer = "+highlight;
 
                     settings.layer2.visible = false;
 
