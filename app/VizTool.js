@@ -215,7 +215,9 @@ define([
                 settings.layer1.opacity = 0.8;
                 settings.layer2.opacity = 0.8;
                 console.log(highlight);
-                if(selection.substring(0,10) == "COMPLEX_NO"){
+                console.log(selection);
+
+                if(selection.substring(0,10) == "COMPLEX_NO IN" ){
                     selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
 
                     if (selection.length>19){
