@@ -191,7 +191,8 @@ define([
                             usage: initUsage,
                             area: initArea
                         };
-
+                        console.log(initData);
+                        console.log(initCharts);
                         callback(initData, initCharts);
 
                     }.bind(this));
@@ -213,18 +214,21 @@ define([
 
                 settings.layer1.opacity = 0.8;
                 settings.layer2.opacity = 0.8;
-
+                console.log(selection);
+                console.log(highlight);
                 if (selection !== undefined && selection !== "") {
 
                     settings.layer1.definitionExpression = selection;
 
                     settings.layer2.visible = false;
 
+                    console.log(highlight);
                     if (highlight == undefined) {
                         settings.layer2.visible = false;
                     } else {
                         settings.layer2.visible = true;
                         settings.layer2.renderer = null;
+
                         settings.layer2.definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
                     }
                 } else {
