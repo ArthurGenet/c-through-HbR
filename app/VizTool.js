@@ -217,8 +217,15 @@ define([
                 console.log(selection);
                 console.log(highlight);
                 if (selection !== undefined && selection !== "") {
+                    console.log(selection.substring(0,9));
+                    if(selection.substring(0,9) == "COMPLEX_NO"){
 
-                    settings.layer1.definitionExpression = settings.buildingIDname + " LIKE '"+highlight+"'";
+                        settings.layer1.definitionExpression = settings.buildingIDname + " LIKE '"+highlight+"'";
+                    }
+                    else{
+                        settings.layer1.definitionExpression = selection ;
+
+                    }
 
                     settings.layer2.visible = false;
 
