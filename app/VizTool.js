@@ -218,7 +218,7 @@ define([
                 console.log(highlight);
                 if (selection !== undefined && selection !== "") {
 
-                    settings.layer1.definitionExpression = "";
+                    settings.layer1.definitionExpression = "FLOOR_LEVEL_2 = 1";
 
                     settings.layer2.visible = false;
 
