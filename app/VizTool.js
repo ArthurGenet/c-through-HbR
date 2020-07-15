@@ -217,7 +217,7 @@ define([
                 console.log(highlight);
                 console.log(selection);
 
-                if(selection.substring(0,10) == "COMPLEX_NO IN" ){
+                if(selection.substring(0,13) == "COMPLEX_NO IN" ){
                     selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
 
                     if (selection.length>19){
