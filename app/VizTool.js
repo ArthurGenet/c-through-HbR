@@ -214,18 +214,22 @@ define([
 
                 settings.layer1.opacity = 0.8;
                 settings.layer2.opacity = 0.8;
-                console.log(selection);
                 console.log(highlight);
+                if(selection.substring(0,10) == "COMPLEX_NO"){
+                    selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
+
+                    if (selection.length>19){
+                        selection += + selection.substring(20,selection.length);
+                    }
+                }
+                console.log(selection);
+
                 if (selection !== undefined && selection !== "") {
                     console.log(selection.substring(0,10));
-                    if(selection.substring(0,10) == "COMPLEX_NO"){
+                        
+                    settings.layer1.definitionExpression = selection ;
 
-                        settings.layer1.definitionExpression = settings.buildingIDname + " LIKE '"+highlight+"'";
-                    }
-                    else{
-                        settings.layer1.definitionExpression = selection ;
-
-                    }
+                    
 
                     settings.layer2.visible = false;
 
