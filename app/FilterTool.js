@@ -217,7 +217,7 @@ define([
 
                 queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Selecteer Gebruiksfunctie");
+                    distinctValues.unshift("Selecteer gebruiksfunctie");
 
                     this.setDropdown("Usage", distinctValues, this.UsageFilterContainer, function (usageSelector) {
                         this.usageSelector = usageSelector;
