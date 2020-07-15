@@ -89,7 +89,7 @@ define([
                     "startRadius": 70,
                     "fontSize": 12,
                     "fontFamily": "Avenir LT W01 65 Medium",
-                    "radius": 90,
+                    "radius": 80,
                     "marginTop": 100,
                     "pieAlpha": 0.8,
                     "sequencedAnimation": true,
@@ -129,7 +129,7 @@ define([
                             chart.pullSlice(dataItem, 0);
  
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            
+                            console.log("pull");
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 

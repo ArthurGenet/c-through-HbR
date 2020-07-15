@@ -192,7 +192,7 @@ define([
                     }
 
                     var buildingID = results.features[0].attributes[this.settings.buildingIDname];
-
+                    console.log(buildingID);
                     callback(buildingID);
 
                 }.bind(this)).otherwise(function (err) {
