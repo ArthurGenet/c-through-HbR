@@ -304,6 +304,7 @@ define([
                         });
                     }
                     if (vizName === "usage") {
+                        console.log("usage");
                         settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });

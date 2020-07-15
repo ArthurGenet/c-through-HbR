@@ -102,7 +102,6 @@ define([
                         console.log(settings.values);
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
-                            console.log(i);
                             fields.push({
                                 values: settings.values[i],
                                 color: [135, 135, 135, 0.2]
