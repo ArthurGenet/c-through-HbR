@@ -217,8 +217,8 @@ define([
                 console.log(selection);
                 console.log(highlight);
                 if (selection !== undefined && selection !== "") {
-                    console.log(selection.substring(0,9));
-                    if(selection.substring(0,9) == "COMPLEX_NO"){
+                    console.log(selection.substring(0,10));
+                    if(selection.substring(0,10) == "COMPLEX_NO"){
 
                         settings.layer1.definitionExpression = settings.buildingIDname + " LIKE '"+highlight+"'";
                     }
