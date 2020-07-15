@@ -84,7 +84,6 @@ define([
 
                 var kernelwidth = (max - min) / bins;
 
-                function roundKernelwidth(){
                 if (kernelwidth > 1000) {
                     kernelwidth = 500 * Math.round(kernelwidth / 500);
                 }
@@ -106,19 +105,10 @@ define([
                 else {
                     kernelwidth = Math.round(kernelwidth);
                 }
-            }
 
-                roundKernelwidth();
-                var minCompare = min;
                 min = kernelwidth * Math.round(min / kernelwidth);
 
                 var bins_new = (max - min) / kernelwidth;
-                // round down to fit all values in the bar graph
-                if (min > minCompare && min !== 0) {
-                    min = kernelwidth * Math.floor(minCompare / kernelwidth);
-                    roundKernelwidth();
-                    bins_new = (max - min) / kernelwidth;
-                  }
 
                 // set up bins with ranges
                 for (var n = 0; n < bins_new; n++) {
@@ -129,22 +119,14 @@ define([
                     min += kernelwidth;
                 }
 
-                var color;
-                var colorInterpolate;
+                var color = [];
 
                 if (bins_new > 9) {
-                    // set start color of bar graph
-                    colorInterpolate = d3.quantize(d3.interpolateHcl("#FBE789", "#1B90A7"), Math.round(bins_new));
-                    color = colorInterpolate;
+                    color = ["#FBE789", "#E2DD8C", "#C9D38F", "#B0CA93", "#97C096", "#7EB699", "#65AD9D", "#4CA3A0", "#3399A3", "#1B90A7"];
 
                 }
-                else if  (kernel.length > 1){
-                    // set color if selected building (more color)
-                    colorInterpolate = d3.quantize(d3.interpolateHcl("#FBE789", "#1B90A7"), kernel.length);
-                    color = colorInterpolate;
-                } else {
-                    // set color if selected building (one color)
-                    color = ["#1B90A7"];
+                else {
+                    color = ["#FBE789", "#CED58F", "#A1C495", "#74B29B", "#47A1A1", "#1B90A7"];
                 }
 
 

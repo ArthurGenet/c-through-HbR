@@ -163,7 +163,7 @@ define([
                         domCtr.destroy(dom.byId("filter-usage"));
                         this.createFilterFloorUI(this.container);
                         this.createFilterUsageUI(this.container);
-                    } 
+                    }
                 }
             },
 
@@ -173,28 +173,14 @@ define([
 
                 this.updateUI(this.state);
             },
-            deteMobile: function(){
-                if (navigator.userAgent.match(/Android/i) ||
-                navigator.userAgent.match(/webOS/i) ||
-                navigator.userAgent.match(/iPhone/i) ||
-                navigator.userAgent.match(/iPad/i) ||
-                navigator.userAgent.match(/iPod/i) ||
-                navigator.userAgent.match(/BlackBerry/i) ||
-                navigator.userAgent.match(/Windows Phone/i)
-            ) {
-                return true;
-            } else {
-                return false;
-            }
-            },
 
             createUI: function (container) {
 
-                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter by" }, container);
-                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Min Area" }, container);
-                this.areaMaxFilter = domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Max Area" }, container);
+                this.titleFilter = domCtr.create("div", { className: "titleFilter", id: "titleFilter", innerHTML: "Filter op" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMin", innerHTML: "Minimale oppervlakte" }, container);
+                domCtr.create("div", { className: "titleFilter", id: "titleAreaMax", innerHTML: "Maximale oppervlakte" }, container);
 
-                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Reset" }, container);
+                this.reset = domCtr.create("div", { className: "button", id: "reset", innerHTML: "Opnieuw instellen" }, container);
 
                 this.createFilterFloorUI(this.container);
                 this.createFilterUsageUI(this.container);
@@ -205,11 +191,6 @@ define([
                     this.menu.resetFilterUI("filter");
 
                 }.bind(this));
-                if(this.deteMobile() === true){
-
-                    this.titleFilter.style.width = "90%";
-                    this.areaMaxFilter.style.right = "60px";
-                }
 
             },
 
@@ -219,7 +200,7 @@ define([
 
                 queryTools.distinctValues(this.settings.layer1, this.settings.floorname, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Select Floor");
+                    distinctValues.unshift("Selecteer verdieping");
 
                     this.setDropdown("FloorLevel", distinctValues, this.LevelFilterContainer, function (floorSelector) {
                         this.floorSelector = floorSelector;
@@ -228,11 +209,6 @@ define([
                     this.onChangeFloor = this.dropdownChangeFloor(this.floorSelector, this.settings.floorname, "floor");
 
                 }.bind(this));
-                if(this.deteMobile() === true){
-
-                    this.LevelFilterContainer.style.width = "140px";
-                    
-                }
 
             },
 
@@ -241,17 +217,14 @@ define([
 
                 queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
                     distinctValues.sort();
-                    distinctValues.unshift("Select Usage");
+                    distinctValues.unshift("Selecteer Gebruiksfunctie");
 
                     this.setDropdown("Usage", distinctValues, this.UsageFilterContainer, function (usageSelector) {
                         this.usageSelector = usageSelector;
                     }.bind(this));
 
                     this.onChangeUsage = this.dropdownChangeUsage(this.usageSelector, this.settings.usagename, "usage");
-                    if(this.deteMobile() === true){
-                        this.UsageFilterContainer.style.left = "160px";
-                        this.UsageFilterContainer.style.width = "140px";
-                    }
+
                 }.bind(this));
 
             },
@@ -261,11 +234,6 @@ define([
                 this.UsageAreaContainer = domCtr.create("div", { className: "Area", id: "filterAreaMin" }, container);
 
                 this.areaTextBox(this.settings, "area", this.selection);
-                if(this.deteMobile() === true){
-                    
-                    
-                    this.UsageAreaContainer.style.width = "75%";
-                }
 
             },
 

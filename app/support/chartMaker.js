@@ -76,6 +76,8 @@ define([
                     groupPercentValue = "2";
                 }
 
+                console.log(data);
+
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "pie",
                     "theme": "light",
@@ -87,7 +89,7 @@ define([
                     "startRadius": 70,
                     "fontSize": 12,
                     "fontFamily": "Avenir LT W01 65 Medium",
-                    "radius": 70,
+                    "radius": 90,
                     "marginTop": 100,
                     "pieAlpha": 0.8,
                     "sequencedAnimation": true,
@@ -97,9 +99,10 @@ define([
                     "clickSlice": function (dataItem, event) {
 
                         var value = dataItem.title;
-
+                        console.log(settings.values);
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
+                            console.log(i);
                             fields.push({
                                 values: settings.values[i],
                                 color: [135, 135, 135, 0.2]
@@ -114,12 +117,13 @@ define([
 
                         var selectedvalues = [];
                         var selectedcolor = [];
-
+                        console.log(fields);
                         for (var k = 0; k < fields.length; k++) {
                             selectedvalues.push(fields[k].values);
                             selectedcolor.push(fields[k].color);
                         }
-
+                        console.log(selectedvalues);
+                        console.log(selectedcolor);
 
                         if (dataItem.pulled) {
                             chart.pullSlice(dataItem, 0);
@@ -143,7 +147,7 @@ define([
                         "enabled": true
                     }
                 });
-
+                
                 callback("loaded");
 
             },
