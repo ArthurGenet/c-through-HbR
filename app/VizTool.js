@@ -218,7 +218,7 @@ define([
                 console.log(highlight);
                 if (selection !== undefined && selection !== "") {
 
-                    settings.layer1.definitionExpression = selection;
+                    settings.layer1.definitionExpression = settings.buildingIDname + " = "+highlight;
 
                     settings.layer2.visible = false;
 
@@ -229,7 +229,7 @@ define([
                         settings.layer2.visible = true;
                         settings.layer2.renderer = null;
 
-                        settings.layer2.definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
+                        //settings.layer2.definitionExpression = settings.buildingIDname + " NOT IN (" + highlight + ")";
                     }
                 } else {
                     settings.layer1.definitionExpression = undefined;
