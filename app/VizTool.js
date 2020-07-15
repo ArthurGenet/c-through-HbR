@@ -90,23 +90,50 @@ define([
             },
 
             createUI: function (container) {
-                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualiseren op" }, container);
-                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "geen" }, container);
-                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "gebruiksfunctie" }, container);
-                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "oppervlake" }, container);
+                var mobilDetector = detectmob();
+                function detectmob() {
+                    if (navigator.userAgent.match(/Android/i) ||
+                        navigator.userAgent.match(/webOS/i) ||
+                        navigator.userAgent.match(/iPhone/i) ||
+                        navigator.userAgent.match(/iPad/i) ||
+                        navigator.userAgent.match(/iPod/i) ||
+                        navigator.userAgent.match(/BlackBerry/i) ||
+                        navigator.userAgent.match(/Windows Phone/i)
+                    ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualisation by" }, container);
+                this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "none" }, container);
+                this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "usage" }, container);
+                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "area" }, container);
 
                 this.statsDiv = domCtr.create("div", { id: "statsDiv", className: "statsDiv" }, container);
                 this.chartDiv = domCtr.create("div", { id: "chartDiv", className: "chartDiv" }, container);
 
 
-                domCtr.create("div", { id: "titleStats", innerHTML: "Statistieken" }, "statsDiv");
-                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Aantal eenheden:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "usage", innerHTML: "<b>Meest voorkomende gebruiksfunctie:       </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Gemiddelde oppervlakte:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Maximale oppervlakte:      </b>" }, "statsDiv");
-                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Gemiddeld aantal verdiepingen:     </b>" }, "statsDiv");
-                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Maximaal aantal verdiepingen:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "titleStats", innerHTML: "Statistics" }, "statsDiv");
+                domCtr.create("div", { id: "numberofunits", innerHTML: "<b>Number of Units:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "usage", innerHTML: "<b>Most common usage:       </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagearea", innerHTML: "<b>Average Area:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxarea", innerHTML: "<b>Max Area:      </b>" }, "statsDiv");
+                domCtr.create("div", { id: "averagefloor", innerHTML: "<b>Average Floor Number:     </b>" }, "statsDiv");
+                domCtr.create("div", { id: "maxfloor", innerHTML: "<b>Max Floor Number:     </b>" }, "statsDiv");
 
+                if(mobilDetector === true){
+                    this.label1.style.width = "50px";
+                    this.label2 .style.width = "50px";
+                    this.label3.style.width = "50px";
+                    this.label2 .style.left = "100px";
+                    this.label3.style.left = "180px";
+                    this.chartDiv.style.width = "100%";
+                    this.chartDiv.style.width = "100%";
+                    this.statsDiv.style.width = "100%";
+                    this.title.style.width = "90%";
+                }
+               
             },
 
             updateUI: function (state) {
@@ -230,6 +257,7 @@ define([
                 } else {
                     settings.layer1.definitionExpression = undefined;
                     settings.layer1.renderer = null;
+                    settings.layer2.visible = false;
                 }
 
                 // visualization
@@ -264,6 +292,9 @@ define([
                     chartMaker.createChart(this.view, initCharts.usage, settings, "city", function (state) {
                         this.menu.setLoadingState("loaded");
                     }.bind(this));
+                    statsMaker.createChart(initCharts.stats, function (state) {
+                        this.menu.setLoadingState("loaded");
+                    }.bind(this));
                 }
                 if (vizName === "area") {
                     settings.layer1.renderer = applyRenderer.createRendererVV(initData, settings.areaname);
@@ -272,6 +303,9 @@ define([
                     domStyle.set(dom.byId("statsDiv"), { "opacity": 0 });
 
                     barMaker.createChart(initData, initCharts.area, settings, "city", this.view, function (state) {
+                        this.menu.setLoadingState("loaded");
+                    }.bind(this));
+                    statsMaker.createChart(initCharts.stats, function (state) {
                         this.menu.setLoadingState("loaded");
                     }.bind(this));
                 }
