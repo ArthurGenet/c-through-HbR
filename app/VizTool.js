@@ -239,6 +239,7 @@ define([
                 // visualization
 
                 if (selection !== undefined && selection !== "") {
+                    console.log("on change la visualisation");
                     this.changeVisualiationSelection(vizName, this.menu, this.settings, this.view);
                 } else {
                     this.changeVisualisationCity(vizName, this.initData, this.initCharts);
@@ -293,9 +294,9 @@ define([
                 query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
                 settings.layer1.queryFeatures(query).then(function (result) {
-
+                    console.log(result);
                     var selection = result.features;
-
+                    console.log(selection);
                     if (vizName === "white") {
                         settings.layer1.renderer = applyRenderer.createSimpleRenderer();
 
@@ -309,6 +310,7 @@ define([
                     }
                     if (vizName === "usage") {
                         console.log("usage");
+                        console.log(settings.values);
                         settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
