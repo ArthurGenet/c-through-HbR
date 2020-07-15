@@ -595,7 +595,7 @@ define([
                     // layer2 = background layer (shows remaining buildings, not selected)
 
                     // retrieve active layer from webscene
-                    this.settings.layer1 = this.scene.layers.getItemAt(0);
+                    this.settings.layer1 = this.scene.layers.getItemAt(2);
 
                     // create background layer (identical copy of activ layer) for highlighting and add it to the scene
                     this.settings.layer2 = new SceneLayer({
