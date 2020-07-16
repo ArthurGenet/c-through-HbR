@@ -73,16 +73,79 @@ define([
                 var groupPercentValue = 0;
 
                 if (settings.name !== "Zurich") {
-                    groupPercentValue = "2";
+                    groupPercentValue = "0";
                 }
 
                 console.log(data);
 
-                var chart = am4core.create("chartDiv", am4charts.PieChart);
-                chart.data = data;
-                var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "area";
-pieSeries.dataFields.category = "usage";
+                var chart = AmCharts.makeChart("chartDiv", {
+                    "type": "pie",
+                    "theme": "light",
+                    "dataProvider": data,
+                    "valueField": "area",
+                    "titleField": "usage",
+                    "colorField": "color",
+                    "groupPercent": groupPercentValue,
+                    "startRadius": 70,
+                    "fontSize": 12,
+                    "fontFamily": "Avenir LT W01 65 Medium",
+                    "radius": 80,
+                    "marginTop": 100,
+                    "pieAlpha": 0.8,
+                    "sequencedAnimation": true,
+                    "balloon": {
+                        "fixedPosition": true
+                    },
+                    "clickSlice": function (dataItem, event) {
+
+                        var value = dataItem.title;
+                        console.log(settings.values);
+                        var fields = [];
+                        for (var i = 0; i < settings.values.length; i++) {
+                            fields.push({
+                                values: settings.values[i],
+                                color: [135, 135, 135, 0.2]
+                            });
+                        }
+
+                        for (var j = 0; j < fields.length; j++) {
+                            if (fields[j].values === value) {
+                                fields[j].color = color[j];
+                            }
+                        }
+
+                        var selectedvalues = [];
+                        var selectedcolor = [];
+                        console.log(fields);
+                        for (var k = 0; k < fields.length; k++) {
+                            selectedvalues.push(fields[k].values);
+                            selectedcolor.push(fields[k].color);
+                        }
+                        console.log(selectedvalues);
+                        console.log(selectedcolor);
+
+                        if (dataItem.pulled) {
+                            chart.pullSlice(dataItem, 0);
+ 
+                            settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
+                            console.log("pull");
+                            view.environment.lighting.directShadowsEnabled = true;
+                            view.environment.lighting.ambientOcclusionEnabled = true;
+
+                        } else {
+                            chart.pullSlice(dataItem, 1);
+
+                            settings.layer1.renderer = applyRenderer.createRenderer(selectedvalues, selectedcolor, settings.usagename);
+                            
+                            view.environment.lighting.directShadowsEnabled = false;
+                            view.environment.lighting.ambientOcclusionEnabled = false;
+                        }
+
+                    }.bind(this),
+                    "export": {
+                        "enabled": true
+                    }
+                });
                 
                 callback("loaded");
 
