@@ -219,8 +219,22 @@ define([
 
                 
                 if (selection !== undefined && selection !== "") {
-                 
-                    settings.layer1.definitionExpression = selection;
+                    console.log(selection.substring(0,10));
+                    if(selection.substring(0,10) == "COMPLEX_NO" ){
+                        console.log("ici");
+                        selection_new = settings.buildingIDname + " LIKE '"+ highlight +"' ";
+                        console.log(selection.length);
+                        console.log(selection);
+                        if (selection.length>19){
+                            console.log("al");
+                            selection = selection_new + selection.substring(20,selection.length);
+                        }
+                        else{
+                            selection = selection_new;
+                        }
+                    }
+                    console.log(selection);
+                    settings.layer1.definitionExpression = selection ;
 
                     
 
