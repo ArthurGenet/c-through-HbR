@@ -142,7 +142,8 @@ define([
 
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
-
+                console.log(valuemax);
+                console.log(valuemin);
                 return new UniqueValueRenderer({
                     defaultSymbol: new MeshSymbol3D({
                         symbolLayers: [new FillSymbol3DLayer({
