@@ -121,7 +121,7 @@ define([
 
                 var color = [];
 
-                if (bins_new > 9) {
+                if (bins_new > 6) {
                     color = ["#FBE789", "#E2DD8C", "#C9D38F", "#B0CA93", "#97C096", "#7EB699", "#65AD9D", "#4CA3A0", "#3399A3", "#1B90A7"];
 
                 }
