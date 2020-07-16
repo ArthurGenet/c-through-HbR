@@ -74,7 +74,7 @@ define([
                     // Uncomment the next line and update if using your own portal
                     // portalUrl: "https://<host>:<port>/arcgis"
                     // Uncomment the next line to prevent the user's signed in state from being shared with other apps on the same domain with the same authNamespace value.
-                    // authNamespace: "portal_oauth_inline",
+                    authNamespace: "portal_oauth_inline",
                     popup: true
                 });
 
