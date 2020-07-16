@@ -218,17 +218,19 @@ define([
                 console.log(selection);
 
                 
-                console.log(selection);
-
                 if (selection !== undefined && selection !== "") {
                     console.log(selection.substring(0,10));
                     if(selection.substring(0,10) == "COMPLEX_NO" ){
                         console.log("ici");
-                        selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
+                        selection_new = settings.buildingIDname + " LIKE '"+ highlight +"' ";
                         console.log(selection.length);
-                        if (selection.length>22){
+                        console.log(selection);
+                        if (selection.length>19){
                             console.log("al");
-                            selection = selection + selection.substring(22,selection.length);
+                            selection = selection_new + selection.substring(20,selection.length);
+                        }
+                        else{
+                            selection = selection_new;
                         }
                     }
                 console.log(selection);
