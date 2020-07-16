@@ -121,7 +121,7 @@ define([
 
                 var color = [];
 
-                if (bins_new > 0) {
+                if (bins_new > 6) {
                     color = ["#FBE789", "#E2DD8C", "#C9D38F", "#B0CA93", "#97C096", "#7EB699", "#65AD9D", "#4CA3A0", "#3399A3", "#1B90A7"];
 
                 }
@@ -148,13 +148,13 @@ define([
                         }
                     }
                 }
-
+                console.log(chartData);
                 return chartData;
             },
 
 
             createChart: function (selection, data, settings, state, view, callback) {
-
+                console.log(data);
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "serial",
                     "theme": "light",

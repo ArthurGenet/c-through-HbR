@@ -139,7 +139,7 @@ define([
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
                 }
-
+                console.log(totalrange);
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
                 console.log(valuemax);
