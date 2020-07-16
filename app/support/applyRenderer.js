@@ -168,6 +168,7 @@ define([
 
                 console.log(min);
                 console.log(max);
+                console.log(color);
                 var defaultcolor = [135, 135, 135, 0.2];
 
                 return new UniqueValueRenderer({
@@ -183,10 +184,10 @@ define([
                         type: "color",
                         field: fieldname,
                         stops: [
-                            { value: min-1, color: defaultcolor},
+                            { value: min-0.01, color: defaultcolor},
                             { value: min, color: color },
                             { value: max, color: color },
-                            { value: max+1, color: defaultcolor}
+                            { value: max+0.01, color: defaultcolor}
                         ]
                     }]
 
