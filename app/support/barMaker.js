@@ -117,10 +117,10 @@ define([
                 if(max > 2000){
                     console.log("oui");
                     if(max > 10000){
-                        kernel = [{min:0,max:50},{min:50,max:100},{min:100,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:20000}]
+                        kernel = [{min:0,max:25},{min:25,max:50},{min:50,max:100},{min:100,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:20000}]
                     }
                     else{
-                        kernel = [{min:0,max:50},{min:50,max:100},{min:100,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:7500}]
+                        kernel = [{min:0,max:25},{min:25,max:50},{min:50,max:100},{min:100,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:7500}]
                     }
                 }
 

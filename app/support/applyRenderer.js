@@ -158,7 +158,7 @@ define([
                         field: fieldname,
                         stops: [
                             { value: valuemin, color: "#FBE789" },
-                            { value: valuemax, color: "#1B90A7" }
+                            { value: valuemax, color: "#97C4AD" }
                         ]
                     }]
 
