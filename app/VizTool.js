@@ -226,9 +226,9 @@ define([
                         console.log("ici");
                         selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
                         console.log(selection.length);
-                        if (selection.length>19){
+                        if (selection.length>22){
                             console.log("al");
-                            selection += + selection.substring(20,selection.length);
+                            selection = selection + selection.substring(22,selection.length);
                         }
                     }
                 console.log(selection);
