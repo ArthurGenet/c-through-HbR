@@ -73,7 +73,7 @@ define([
                 var groupPercentValue = 0;
 
                 if (settings.name !== "Zurich") {
-                    groupPercentValue = "0";
+                    groupPercentValue = "2";
                 }
 
                 console.log(data);

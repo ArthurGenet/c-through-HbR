@@ -166,6 +166,8 @@ define([
 
             createRendererVVbar: function (min, max, color, fieldname) {
 
+                console.log(min);
+                console.log(max);
                 var defaultcolor = [135, 135, 135, 0.2];
 
                 return new UniqueValueRenderer({
