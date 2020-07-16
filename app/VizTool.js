@@ -220,7 +220,7 @@ define([
                 
                 if (selection !== undefined && selection !== "") {
                  
-                    settings.layer1.definitionExpression = settings.buildingIDname + " LIKE '"+ highlight +"' ";
+                    settings.layer1.definitionExpression = selection;
 
                     
 
