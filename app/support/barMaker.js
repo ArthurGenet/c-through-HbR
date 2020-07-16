@@ -110,13 +110,24 @@ define([
 
                 var bins_new = (max - min) / kernelwidth;
 
-                // set up bins with ranges
-                for (var n = 0; n < bins_new; n++) {
-                    kernel.push({
-                        min: min,
-                        max: min + kernelwidth
-                    });
-                    min += kernelwidth;
+                
+                console.log(kernel);
+                console.log(max);
+                
+                if(max > 10000){
+                    console.log("oui");
+                    kernel = [{min:0,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:1500},{min:1500,max:2500},{min:2500,max:5000},{min:5000,max:7500},{min:7500,max:10000},{min:10000,max:20000}]
+                }
+
+                else{
+                    // set up bins with ranges
+                    for (var n = 0; n < bins_new; n++) {
+                        kernel.push({
+                            min: min,
+                            max: min + kernelwidth
+                        });
+                        min += kernelwidth;
+                    }
                 }
 
                 var color = [];
@@ -130,6 +141,8 @@ define([
                 }
 
 
+                
+                
                 for (var i = 0; i < kernel.length; i++) {
                     chartData.push({
                         kernel: Math.round(kernel[i].min) + "m2 - " + Math.round(kernel[i].max) + "m2",
@@ -141,11 +154,6 @@ define([
                     });
                 }
                 console.log(kernel);
-                console.log(max);
-                if(max > 10000){
-                    kernel = [{min:0,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:1500},{min:1500,max:2500},{min:2500,max:5000},{min:5000,max:7500},{min:7500,max:10000},{min:10000,max:20000}]
-                }
-
                 for (var k = 0; k < totalrange.length; k++) {
                     for (var m = 0; m < kernel.length; m++) {
                         if (totalrange[k] > kernel[m].min && totalrange[k] <= kernel[m].max) {
