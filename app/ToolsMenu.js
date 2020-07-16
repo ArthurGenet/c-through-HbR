@@ -1,21 +1,12 @@
- /* Copyright 2017 Esri
-
+  /* Copyright 2017 Esri
    Licensed under the Apache License, Version 2.0 (the "License");
-
    you may not use this file except in compliance with the License.
-
    You may obtain a copy of the License at
-
        http://www.apache.org/licenses/LICENSE-2.0
-
    Unless required by applicable law or agreed to in writing, software
-
    distributed under the License is distributed on an "AS IS" BASIS,
-
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-
    See the License for the specific language governing permissions and
-
    limitations under the License.
    ​
    */
@@ -53,6 +44,7 @@ define([
                 this.settings = params.config;
                 this.scene = params.map;
                 this.view = params.view;
+
                 this.state = params.state;
 
                 this.createUI();
@@ -60,24 +52,10 @@ define([
             },
 
             createUI: function () {
-                var toolsMenuInnerBox = document.querySelector("#toolsMenuInnerBox");
-                var toolsMenu = document.querySelector("#toolsMenu");
-                var viewDiv = document.querySelector("#viewDiv");
-                this.containerArrow = domCtr.create("div", { className: "arrowUp" }, dom.byId("toolsMenuInnerBox"));
-                
-                this.containerSelect = domCtr.create("div", { className: "containerSelect" }, dom.byId("toolsMenuInnerBox"));
-                this.containerViz = domCtr.create("div", { className: "containerViz" }, dom.byId("toolsMenuInnerBox"));
-                this.containerFilter = domCtr.create("div", { className: "containerFilter", id: "containerFilter" }, dom.byId("toolsMenuInnerBox"));
-                var arrowUp = document.querySelector(".arrowUp");
-                var containerSelect = document.querySelector(".containerSelect");
+                this.containerSelect = domCtr.create("div", { className: "containerSelect" }, dom.byId("toolsMenu"));
+                this.containerViz = domCtr.create("div", { className: "containerViz" }, dom.byId("toolsMenu"));
+                this.containerFilter = domCtr.create("div", { className: "containerFilter", id: "containerFilter" }, dom.byId("toolsMenu"));
 
-                var windowHitht = document.documentElement.clientHeight;
-                    toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
-                    window.addEventListener("resize", function(){
-                        windowHitht = document.documentElement.clientHeight;
-                        toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
-
-                    });
             },
 
             setupTools: function () {
@@ -102,7 +80,6 @@ define([
                     filterstate: this.state.filter,
                     settings: this.settings,
                     view: this.view
-                    
                 });
 
             },
@@ -143,8 +120,7 @@ define([
 
                 this.state.combinedExpression = this.calculateCombinedExpression(this.settings);
                 this.setVizState(this.state.viz, this.state.filter, state, this.state.combinedExpression);
-
-
+                this.filterTool.setFilterState(this.state);
             },
 
             setVizState: function (state) {
@@ -154,24 +130,14 @@ define([
             },
 
             resetFilterUI: function (mode) {
-            	
                 this.filterTool.resetUI(this.state.filter, function (state) {
-
                     this.state.filter = state;
-
-                    //if (mode == "highlight") {
-                    this.setHighlightState({ name: "city", expression: undefined });
-                    //} 
-
                     if (mode == "filter") {
                         this.setHighlightState(this.state.highlight);
                     }
-
-                    this.filterTool.setFilterState(this.state);
-                    
-                    dom.byId("buildingInfo").innerHTML = "Aantal gebouwen: 33";
-
-                    
+                    if (mode == "highlight") {
+                        this.setHighlightState({ name: "city", expression: undefined });
+                    }
                 }.bind(this));
             },
 
