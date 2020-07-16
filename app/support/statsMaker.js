@@ -77,7 +77,7 @@ define([
                 }
                 
                 if (usageAreaSum === 0){
-                    chartData.mostCommonUsage.usage = "0ther";
+                    chartData.mostCommonUsage.usage = "Andere";
                 } else{
                     chartData.mostCommonUsage = usageData[usageData.length - 1];
                 }
