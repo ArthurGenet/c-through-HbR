@@ -222,13 +222,16 @@ define([
 
                 if (selection !== undefined && selection !== "") {
                     console.log(selection.substring(0,10));
-                    if(selection.substring(0,13) == "COMPLEX_NO IN" ){
-                    selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
-
-                    if (selection.length>19){
-                        selection += + selection.substring(20,selection.length);
+                    if(selection.substring(0,10) == "COMPLEX_NO" ){
+                        console.log("ici");
+                        selection = settings.buildingIDname + " LIKE '"+ highlight +"' ";
+                        console.log(selection.length);
+                        if (selection.length>19){
+                            console.log("al");
+                            selection += + selection.substring(20,selection.length);
+                        }
                     }
-                }
+                console.log(selection);
                     settings.layer1.definitionExpression = selection ;
 
                     
