@@ -140,6 +140,9 @@ define([
                         "color": color[i]
                     });
                 }
+                console.log(kernel);
+                console.log(max);
+                
 
                 for (var k = 0; k < totalrange.length; k++) {
                     for (var m = 0; m < kernel.length; m++) {
