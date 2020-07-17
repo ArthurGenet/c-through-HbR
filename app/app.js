@@ -177,7 +177,7 @@ define([
 		          	console.log("ok");
 		            slidesDiv.insertBefore(slideElement, slidesDiv.firstChild);
 		          } else {
-		          	consolde.log("ta");
+		          	console.log("ta");
 		            slidesDiv.appendChild(slideElement);
 		          }
 
