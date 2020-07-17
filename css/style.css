@@ -544,4 +544,35 @@ html, body {
    padding: 10px;
    display: none;
  }
+
+#slidesDiv {
+  background-color: white;
+  opacity: 0.9;
+  color: black;
+  padding: 10px;
+  visibility: hidden;
+  bottom: 20px;
+  overflow-y: auto;
+  text-align: center;
+  height: 260px;
+}
+
+#slidesDiv .slide {
+  /* Show cursor as pointer when on a slide */
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+#slidesDiv .slide .title {
+  /* Center the title text */
+  text-align: center;
+}
+/* Draw active slide with a nice border around the thumbnail */
+
+#slidesDiv .slide.active img {
+  box-shadow: 0px 0px 12px black;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+}
 /* end */
