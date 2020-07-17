@@ -155,24 +155,10 @@ define([
                 this.view.ui.add(homeWidget, "top-left");
 
 
-                const bookmark1 = new Bookmark({
-				  "bookmark": {
-				    "extent": {
-				      "spatialReference": {
-				        "wkid": 102100
-				      },
-				      "xmax": -12251063.434141435,
-				      "xmin": -12561092.020865962,
-				      "ymax": 4977986.7113767695,
-				      "ymin": 4811659.737828305
-				    },
-				    "name": "Utah County"
-				  }
-				});
+                
 
                 const bookmarks = new Bookmarks({
 			        view: this.view,
-			        bookmarks: bookmark1,
 			        // allows bookmarks to be added, edited, or deleted
 			        editingEnabled: true
 			    });
