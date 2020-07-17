@@ -231,6 +231,7 @@ define([
 		             * allows the user to animate to the given slide's viewpoint and turn
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
+		             console.log(slide);
 		            slide.applyTo(this.view);
 		            console.log("okkkkkkkkk");
 		          });
