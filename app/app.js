@@ -49,6 +49,8 @@ define([
 
     "esri/widgets/BasemapToggle",
     "esri/widgets/Home",
+    "esri/widgets/Bookmarks",
+    "esri/webmap/Bookmark",
 
     "dojo/dom",
     "dojo/on",
@@ -64,7 +66,7 @@ define([
     declare, esriConfig,
     OAuthInfo, esriId,
     WebScene, SceneView, SceneLayer, Basemap,
-    BasemapToggle, Home,
+    BasemapToggle, Home, Bookmarks, Bookmark,
     dom, on, domCtr, win, domStyle,
     ToolsMenu, Welcome, queryTools) {
 
@@ -150,6 +152,40 @@ define([
                     view: this.view
                 });
                 this.view.ui.add(homeWidget, "top-left");
+
+
+                const bookmark1 = new Bookmark({
+				  "bookmark": {
+				    "extent": {
+				      "spatialReference": {
+				        "wkid": 102100
+				      },
+				      "xmax": -12251063.434141435,
+				      "xmin": -12561092.020865962,
+				      "ymax": 4977986.7113767695,
+				      "ymin": 4811659.737828305
+				    },
+				    "name": "Utah County"
+				  }
+				});
+
+                const bookmarks = new Bookmarks({
+			        view: view,
+			        bookmarks: bookmark1,
+			        // allows bookmarks to be added, edited, or deleted
+			        editingEnabled: true
+			    });
+
+			    const bkExpand = new Expand({
+			        view: view,
+			        content: bookmarks,
+			        expanded: false
+			    });
+
+			    // Add the widget to the top-right corner of the view
+			    view.ui.add(bkExpand, "top-right");
+
+
                 
                 var windowHitht = document.documentElement.clientHeight;
                      toolsMenuInnerBox.style.height = windowHitht - 50 + "px";
