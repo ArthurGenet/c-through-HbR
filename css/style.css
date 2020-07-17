@@ -546,18 +546,15 @@ html, body {
  }
 
 #slidesDiv {
-  position: absolute;
-  top:10px;
-  right: 550px;
   background-color: white;
   opacity: 0.9;
   color: black;
   padding: 10px;
   visibility: hidden;
+  bottom: 20px;
   overflow-y: auto;
   text-align: center;
   height: 260px;
-  width: 80px;
 }
 
 #slidesDiv .slide {

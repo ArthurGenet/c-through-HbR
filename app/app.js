@@ -154,7 +154,9 @@ define([
                 console.log(this.scene);
                 console.log(this.scene.initialViewProperties);
 
-                
+        this.view.ui.add([ "slidesDiv"], "top-right");
+
+
                 function createSlideUI(slide, placement) {
 		          /*********************************************************************
 		           * Create a new <div> element which contains all the slide information.
@@ -238,6 +240,7 @@ define([
 		           * the WebScene.
 		           *********************************************************************/
 		          var slides = scene.presentation.slides;
+		          console.log(slides);
 
 		          /*********************************************************************
 		           * Loop through each slide in the collection and render the slide
@@ -251,6 +254,13 @@ define([
 		           *********************************************************************/
 		          
 		        });
+
+
+
+
+
+
+
 
                 
                 var windowHitht = document.documentElement.clientHeight;
