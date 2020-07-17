@@ -258,7 +258,7 @@ define([
 		           * The slides are a collection inside the presentation property of
 		           * the WebScene.
 		           *********************************************************************/
-		          var slides = scene.presentation.slides;
+		          var slides = this.scene.presentation.slides;
 		          console.log(slides);
 
 		          /*********************************************************************
