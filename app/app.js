@@ -154,7 +154,7 @@ define([
                 });
                 this.view.ui.add(homeWidget, "top-left");
                 console.log(this.scene);
-                console.log(this.scene.initialViewProperties);
+                console.log(this.scene.initialViewProperties.spatialReference.wkid);
 
 
                 const bookmark1 = new Bookmark({
