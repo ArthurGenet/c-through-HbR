@@ -183,7 +183,7 @@ define([
 			    });
 
 			    // Add the widget to the top-right corner of the view
-			    view.ui.add(bkExpand, "top-right");
+			    this.view.ui.add(bkExpand, "top-right");
 
 
                 
