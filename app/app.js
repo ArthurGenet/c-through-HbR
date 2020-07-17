@@ -51,6 +51,7 @@ define([
     "esri/widgets/Home",
     "esri/widgets/Bookmarks",
     "esri/webmap/Bookmark",
+    "esri/widgets/Expand",
 
     "dojo/dom",
     "dojo/on",
@@ -66,7 +67,7 @@ define([
     declare, esriConfig,
     OAuthInfo, esriId,
     WebScene, SceneView, SceneLayer, Basemap,
-    BasemapToggle, Home, Bookmarks, Bookmark,
+    BasemapToggle, Home, Bookmarks, Bookmark, Expand,
     dom, on, domCtr, win, domStyle,
     ToolsMenu, Welcome, queryTools) {
 
