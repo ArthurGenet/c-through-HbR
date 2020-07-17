@@ -157,7 +157,35 @@ define([
                 console.log(this.scene.initialViewProperties);
 
 
-                
+                const bookmark1 = new Bookmark({
+				    "extent": {
+				      "spatialReference": {
+				        "wkid": null
+				      },
+				      "xmax": -524088.32,
+				      "xmin": -524087.32,
+				      "ymax": 483069.845,
+				      "ymin": 483067.84
+				    },
+				    "name": "Utah County"
+				  
+				});
+
+                const bookmarks = new Bookmarks({
+			        view: this.view,
+			        bookmarks: bookmark1,
+			        // allows bookmarks to be added, edited, or deleted
+			        editingEnabled: true
+			    });
+
+			    const bkExpand = new Expand({
+			        view: this.view,
+			        content: bookmarks,
+			        expanded: false
+			    });
+
+			    // Add the widget to the top-right corner of the view
+			    this.view.ui.add(bkExpand, "top-right");
 
 
                 
@@ -175,7 +203,6 @@ define([
 
                     // retrieve active layer from webscene
                     this.settings.layer1 = this.scene.layers.getItemAt(2);
-                    console.log(this.settings.layer1.spatialReference);
                     console.log(this.settings.layer1);
                     console.log(this.settings.layer1.title);
                     console.log(this.settings.layer1.fields);
