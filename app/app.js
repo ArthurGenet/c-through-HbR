@@ -232,7 +232,7 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		             console.log(slide);
-		            slides[0].applyTo(this.view);
+		            slides.getItemAt(0).applyTo(this.view);
 		            console.log("okkkkkkkkk");
 		          });
 		        }
