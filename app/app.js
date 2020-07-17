@@ -170,14 +170,14 @@ define([
 				});
 
                 const bookmarks = new Bookmarks({
-			        view: view,
+			        view: this.view,
 			        bookmarks: bookmark1,
 			        // allows bookmarks to be added, edited, or deleted
 			        editingEnabled: true
 			    });
 
 			    const bkExpand = new Expand({
-			        view: view,
+			        view: this.view,
 			        content: bookmarks,
 			        expanded: false
 			    });
