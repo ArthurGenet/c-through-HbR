@@ -173,7 +173,7 @@ define([
 
                 const bookmarks = new Bookmarks({
 			        view: this.view,
-			        bookmarks: bookmark1,
+			        bookmarks: {bookmark1},
 			        // allows bookmarks to be added, edited, or deleted
 			        editingEnabled: true
 			    });
