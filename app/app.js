@@ -153,12 +153,14 @@ define([
                     view: this.view
                 });
                 this.view.ui.add(homeWidget, "top-left");
+                console.log(this.scene);
+                console.log(this.scene.initialViewProperties);
 
 
                 const bookmark1 = new Bookmark({
 				    "extent": {
 				      "spatialReference": {
-				        "wkid": 28992
+				        "wkid": 4236
 				      },
 				      "xmax": -524088.32,
 				      "xmin": -524087.32,
