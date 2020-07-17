@@ -216,6 +216,7 @@ define([
 		              node.classList.remove("active");
 		            });
 		            console.log("okk");
+		            console.log(slideElement);
 		            /*******************************************************************
 		             * Add the "active" class on the current element being selected
 		             *******************************************************************/
