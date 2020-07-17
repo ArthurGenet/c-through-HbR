@@ -158,6 +158,7 @@ define([
 
 
                 function createSlideUI(slide, placement) {
+                	console.log("create slide")
 		          /*********************************************************************
 		           * Create a new <div> element which contains all the slide information.
 		           * Store a reference to the created DOM node so we can use it to place
@@ -173,8 +174,10 @@ define([
 		           *********************************************************************/
 		          var slidesDiv = document.getElementById("slidesDiv");
 		          if (placement === "first") {
+		          	console.log("ok");
 		            slidesDiv.insertBefore(slideElement, slidesDiv.firstChild);
 		          } else {
+		          	consolde.log("ta");
 		            slidesDiv.appendChild(slideElement);
 		          }
 
@@ -229,31 +232,7 @@ define([
 		          });
 		        }
 
-		        this.view.when(function () {
-		          /*********************************************************************
-		           * The slides will be placed in the 'slidesDiv' <div> element.
-		           *********************************************************************/
-		          document.getElementById("slidesDiv").style.visibility = "visible";
-
-		          /*********************************************************************
-		           * The slides are a collection inside the presentation property of
-		           * the WebScene.
-		           *********************************************************************/
-		          var slides = scene.presentation.slides;
-		          console.log(slides);
-
-		          /*********************************************************************
-		           * Loop through each slide in the collection and render the slide
-		           *********************************************************************/
-		          slides.forEach(createSlideUI);
-
-		          /*********************************************************************
-		           * Create a new slide using Slide.createFrom after clicking on the
-		           * create slide button, using the text from the title input for the
-		           * title of the slide.
-		           *********************************************************************/
-		          
-		        });
+		        
 
 
 
@@ -272,6 +251,26 @@ define([
 
                 // wait until view is loaded
                 this.view.when(function () {
+
+                  document.getElementById("slidesDiv").style.visibility = "visible";
+
+		          /*********************************************************************
+		           * The slides are a collection inside the presentation property of
+		           * the WebScene.
+		           *********************************************************************/
+		          var slides = scene.presentation.slides;
+		          console.log(slides);
+
+		          /*********************************************************************
+		           * Loop through each slide in the collection and render the slide
+		           *********************************************************************/
+		          slides.forEach(createSlideUI);
+
+
+
+
+
+
                     // layer1 = active layer (receives renderers, used for statistics, selected)
                     // layer2 = background layer (shows remaining buildings, not selected)
 
