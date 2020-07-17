@@ -206,19 +206,21 @@ define([
 		           * the code defined below will execute.
 		           *********************************************************************/
 		          slideElement.addEventListener("click", function () {
+		          	console.log("click");
 		            /*******************************************************************
 		             * Remove the "active" class from all elements with the .slide class
 		             *******************************************************************/
 		            var slides = document.querySelectorAll(".slide");
+		            console.log(slides);
 		            Array.from(slides).forEach(function (node) {
 		              node.classList.remove("active");
 		            });
-
+		            console.log("okk");
 		            /*******************************************************************
 		             * Add the "active" class on the current element being selected
 		             *******************************************************************/
 		            slideElement.classList.add("active");
-
+		            console.log("okkkk");
 		            /******************************************************************
 		             * Applies a slide's settings to the SceneView.
 		             *
@@ -229,6 +231,7 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		            slide.applyTo(this.view);
+		            console.log("okkkkkkkkk");
 		          });
 		        }
 
