@@ -223,11 +223,11 @@ define([
 		             * allows the user to animate to the given slide's viewpoint and turn
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
-		            slide.applyTo(view);
+		            slide.applyTo(this.view);
 		          });
 		        }
 
-		        view.when(function () {
+		        this.view.when(function () {
 		          /*********************************************************************
 		           * The slides will be placed in the 'slidesDiv' <div> element.
 		           *********************************************************************/
