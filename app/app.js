@@ -260,6 +260,11 @@ define([
 
                 // wait until view is loaded
                 this.view.when(function () {
+                	var firstSlide = scene.presentation.slides.getItemAt(0);
+
+firstSlide.applyTo(view).then(function() {
+  // Slide has been successfully applied to the view
+});
 
                   document.getElementById("slidesDiv").style.visibility = "visible";
 
