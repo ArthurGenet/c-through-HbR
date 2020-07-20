@@ -155,7 +155,8 @@ define([
                 console.log(this.scene.initialViewProperties);
 
         this.view.ui.add([ "slidesDiv"], "top-right");
-		        
+
+
                 function createSlideUI(slide, placement) {
                 	console.log("create slide")
 		          /*********************************************************************
@@ -163,6 +164,7 @@ define([
 		           * Store a reference to the created DOM node so we can use it to place
 		           * other DOM nodes and connect events.
 		           *********************************************************************/
+		           console.log(this.scene);
 		          var slideElement = document.createElement("div");
 		          // Assign the ID of the slide to the <span> element
 		          slideElement.id = slide.id;
@@ -231,9 +233,8 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		             console.log(slide);
-		             var slide2 = this.scene.presentation.slides.getItemAt(0);
-		             console.log(slide);
-		            slide2.applyTo(this.view);
+		             console.log(this.scene);
+		            slide.applyTo(this.view);
 		            console.log("okkkkkkkkk");
 		          });
 		        }
@@ -257,11 +258,6 @@ define([
 
                 // wait until view is loaded
                 this.view.when(function () {
-                	var firstSlide = this.scene.presentation.slides.getItemAt(0);
-                	console.log(firstSlide);
-					firstSlide.applyTo(this.view).then(function() {
-					  // Slide has been successfully applied to the view
-					});
 
                   document.getElementById("slidesDiv").style.visibility = "visible";
 
@@ -276,37 +272,6 @@ define([
 		           * Loop through each slide in the collection and render the slide
 		           *********************************************************************/
 		          slides.forEach(createSlideUI);
-		          document
-		            .getElementById("createSlideButton")
-		            .addEventListener("click", function () {
-		              /*******************************************************************
-		               * Use the Slide.createFrom static method to create a new slide which
-		               * contains a snapshot (visible layers, basemap, camera) of the
-		               * current view. This method returns a Promise which resolves with a
-		               * new Slide instance once the slide as been successfully created.
-		               *******************************************************************/
-		              Slide.createFrom(this.view).then(function (slide) {
-		                /*****************************************************************
-		                 * Set the slide title
-		                 *****************************************************************/
-		                slide.title.text = document.getElementById(
-		                  "createSlideTitleInput"
-		                ).value;
-
-		                /*****************************************************************
-		                 * Add the slide to the slides collection of the scene presentation
-		                 * such that if the scene were to published back to the portal, the
-		                 * newly created slide would be correctly persisted as part of the
-		                 * WebScene
-		                 *****************************************************************/
-		                this.scene.presentation.slides.add(slide);
-
-		                /*****************************************************************
-		                 * Create UI for the slide and present it to the user
-		                 *****************************************************************/
-		                createSlideUI(slide, "first");
-		              });
-		            });
 
 
 
@@ -334,11 +299,7 @@ define([
 
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
                     queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
-                    	var firstSlide = this.scene.presentation.slides.getItemAt(1);
-                	console.log(firstSlide);
-					firstSlide.applyTo(this.view).then(function() {
-					  // Slide has been successfully applied to the view
-					});
+
                         distinctValues.sort();
                         this.settings.values = distinctValues;
 
@@ -369,6 +330,11 @@ define([
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
                 });
+                var firstSlide = this.scene.presentation.slides.getItemAt(0);
+
+firstSlide.applyTo(this.view).then(function() {
+  // Slide has been successfully applied to the view
+});
 
             },
 
