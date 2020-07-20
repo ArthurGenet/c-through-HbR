@@ -179,7 +179,7 @@ define([
 		          /*********************************************************************
 		           * Place the newly created DOM node cat the beginning of the slidesDiv
 		           *********************************************************************/
-		          var slidesDiv = document.getElementById("panel-body");
+		          var slidesDiv = document.getElementById("slidesDiv");
 		          if (placement === "first") {
 		          	console.log("ok");
 		            slidesDiv.insertBefore(slideElement, slidesDiv.firstChild);
