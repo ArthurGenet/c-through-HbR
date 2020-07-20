@@ -553,8 +553,9 @@ html, body {
   visibility: hidden;
   overflow-y: auto;
   text-align: center;
-  height: 260px;
-  width:200px;
+  height: 245px;
+  width:150px;
+  font-size: 10px;
 }
 
 #slidesDiv .slide {
