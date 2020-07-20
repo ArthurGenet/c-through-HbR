@@ -161,7 +161,7 @@ define([
 
 
 
-       // this.view.ui.add([ "slidesDiv"], "top-right");
+       		this.view.ui.add([ "slidesDiv"], "top-right");
 
         		var view =this.view;
                 function createSlideUI(slide, placement) {
