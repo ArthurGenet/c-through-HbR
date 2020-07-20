@@ -261,7 +261,7 @@ define([
                 // wait until view is loaded
                 this.view.when(function () {
                 	var firstSlide = this.scene.presentation.slides.getItemAt(0);
-
+                	console.log(firstSlide);
 					firstSlide.applyTo(this.view).then(function() {
 					  // Slide has been successfully applied to the view
 					});
