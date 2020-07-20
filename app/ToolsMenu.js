@@ -142,6 +142,7 @@ define([
                 this.highlightTool.setHighlightState(state);
 
                 this.state.combinedExpression = this.calculateCombinedExpression(this.settings);
+                console.log(this.state.combinedExpression);
                 this.setVizState(this.state.viz, this.state.filter, state, this.state.combinedExpression);
 
 
@@ -159,9 +160,9 @@ define([
 
                     this.state.filter = state;
 
-                    //if (mode == "highlight") {
+                    if (mode == "highlight") {
                     this.setHighlightState({ name: "city", expression: undefined });
-                    //} 
+                    } 
 
                     if (mode == "filter") {
                         this.setHighlightState(this.state.highlight);
