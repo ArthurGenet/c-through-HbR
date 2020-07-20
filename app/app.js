@@ -252,7 +252,7 @@ define([
                 // wait until view is loaded
                 this.view.when(function () {
 
-                  document.getElementsByClassName("slidesDiv").style.visibility = "visible";
+                  //document.getElementsByClassName("slidesDiv").style.visibility = "visible";
 
 		          /*********************************************************************
 		           * The slides are a collection inside the presentation property of
