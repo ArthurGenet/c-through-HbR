@@ -236,6 +236,8 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		             console.log(slide);
+		             var slide = this.scene.presentation.slides.getItemAt(0);
+		             console.log(slide);
 		            slide.applyTo(this.view);
 		            console.log("okkkkkkkkk");
 		          });
