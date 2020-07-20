@@ -279,7 +279,7 @@ define([
 		               * current view. This method returns a Promise which resolves with a
 		               * new Slide instance once the slide as been successfully created.
 		               *******************************************************************/
-		              Slide.createFrom(view).then(function (slide) {
+		              Slide.createFrom(this.view).then(function (slide) {
 		                /*****************************************************************
 		                 * Set the slide title
 		                 *****************************************************************/
@@ -293,7 +293,7 @@ define([
 		                 * newly created slide would be correctly persisted as part of the
 		                 * WebScene
 		                 *****************************************************************/
-		                scene.presentation.slides.add(slide);
+		                this.scene.presentation.slides.add(slide);
 
 		                /*****************************************************************
 		                 * Create UI for the slide and present it to the user
