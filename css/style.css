@@ -551,7 +551,6 @@ html, body {
   color: black;
   padding: 10px;
   visibility: hidden;
-  bottom: 20px;
   overflow-y: auto;
   text-align: center;
   height: 260px;
