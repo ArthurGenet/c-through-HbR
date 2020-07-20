@@ -1,21 +1,12 @@
  /* Copyright 2017 Esri
-
    Licensed under the Apache License, Version 2.0 (the "License");
-
    you may not use this file except in compliance with the License.
-
    You may obtain a copy of the License at
-
        http://www.apache.org/licenses/LICENSE-2.0
-
    Unless required by applicable law or agreed to in writing, software
-
    distributed under the License is distributed on an "AS IS" BASIS,
-
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-
    See the License for the specific language governing permissions and
-
    limitations under the License.
    ​
    */
@@ -85,7 +76,7 @@ define([
         var settings_demo = {
             name: "Demo",
             url: "https://esrinederland.maps.arcgis.com",    // portal URL for config
-            webscene: "cd3d61e4b4f34a1bbee92c211e18da33",   // portal item ID of the webscene
+            webscene: "fe0f3de49e824ecf9184cb04a59b0ff1",   // portal item ID of the webscene
             usagename: "ROOM_NAME",                             // usage attribute (string)
             floorname: "FLOOR_LEVEL_2",                           // floor attribute (int)
             OIDname: "OBJECTID",                            // objectid
@@ -161,7 +152,7 @@ define([
 
 
 
-       		this.view.ui.add([ "slidesDiv"], "top-right");
+        this.view.ui.add([ "slidesDiv"], "top-right");
 
         		var view =this.view;
                 function createSlideUI(slide, placement) {
@@ -252,7 +243,7 @@ define([
                 // wait until view is loaded
                 this.view.when(function () {
 
-                  //document.getElementsByClassName("slidesDiv").style.visibility = "visible";
+                  document.getElementById("slidesDiv").style.visibility = "visible";
 
 		          /*********************************************************************
 		           * The slides are a collection inside the presentation property of
@@ -323,8 +314,6 @@ define([
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
                 });
-                
-
             },
 
             getSettingsFromUser: function (settings) {
@@ -335,7 +324,5 @@ define([
             }
         });
     });
-
-
 
 
