@@ -270,6 +270,37 @@ define([
 		           * Loop through each slide in the collection and render the slide
 		           *********************************************************************/
 		          slides.forEach(createSlideUI);
+		          document
+            .getElementById("createSlideButton")
+            .addEventListener("click", function () {
+              /*******************************************************************
+               * Use the Slide.createFrom static method to create a new slide which
+               * contains a snapshot (visible layers, basemap, camera) of the
+               * current view. This method returns a Promise which resolves with a
+               * new Slide instance once the slide as been successfully created.
+               *******************************************************************/
+              Slide.createFrom(view).then(function (slide) {
+                /*****************************************************************
+                 * Set the slide title
+                 *****************************************************************/
+                slide.title.text = document.getElementById(
+                  "createSlideTitleInput"
+                ).value;
+
+                /*****************************************************************
+                 * Add the slide to the slides collection of the scene presentation
+                 * such that if the scene were to published back to the portal, the
+                 * newly created slide would be correctly persisted as part of the
+                 * WebScene
+                 *****************************************************************/
+                scene.presentation.slides.add(slide);
+
+                /*****************************************************************
+                 * Create UI for the slide and present it to the user
+                 *****************************************************************/
+                createSlideUI(slide, "first");
+              });
+            });
 
 
 
