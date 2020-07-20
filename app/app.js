@@ -151,12 +151,19 @@ define([
                     view: this.view
                 });
                 this.view.ui.add(homeWidget, "top-left");
+
+
                 console.log(this.scene);
                 console.log(this.scene.initialViewProperties);
 
+        
+
+
+
+
         this.view.ui.add([ "slidesDiv"], "top-right");
 
-
+        		var view =this.view;
                 function createSlideUI(slide, placement) {
                 	console.log("create slide")
 		          /*********************************************************************
@@ -164,7 +171,6 @@ define([
 		           * Store a reference to the created DOM node so we can use it to place
 		           * other DOM nodes and connect events.
 		           *********************************************************************/
-		           console.log(this.scene);
 		          var slideElement = document.createElement("div");
 		          // Assign the ID of the slide to the <span> element
 		          slideElement.id = slide.id;
@@ -233,8 +239,7 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		             console.log(slide);
-		             console.log(this.scene);
-		            slide.applyTo(this.view);
+		            slide.applyTo(view);
 		            console.log("okkkkkkkkk");
 		          });
 		        }
@@ -331,7 +336,7 @@ define([
                     console.error(err);
                 });
                 var firstSlide = this.scene.presentation.slides.getItemAt(0);
-
+console.log(firstSlide);
 firstSlide.applyTo(this.view).then(function() {
   // Slide has been successfully applied to the view
 });
