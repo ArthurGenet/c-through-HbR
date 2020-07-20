@@ -155,7 +155,11 @@ define([
                 console.log(this.scene.initialViewProperties);
 
         this.view.ui.add([ "slidesDiv"], "top-right");
-
+		        Slide.createFrom(this.view).then(function(slide) {
+		        	console.log("oui");
+		  // Add slide to the scene presentation
+		  this.scene.presentation.slides.add(slide);
+		});
 
                 function createSlideUI(slide, placement) {
                 	console.log("create slide")
