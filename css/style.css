@@ -554,8 +554,8 @@ html, body {
   overflow-y: auto;
   text-align: center;
   height: 245px;
-  width:150px;
-  font-size: 10px;
+  width:130px;
+  font-size: 12px;
 }
 
 #slidesDiv .slide {
