@@ -323,11 +323,7 @@ define([
                 }.bind(this)).otherwise(function (err) {
                     console.error(err);
                 });
-                var firstSlide = this.scene.presentation.slides.getItemAt(0);
-console.log(firstSlide);
-firstSlide.applyTo(this.view).then(function() {
-  // Slide has been successfully applied to the view
-});
+                
 
             },
 
