@@ -546,6 +546,9 @@ html, body {
  }
 
 #slidesDiv {
+  position: absolute;
+  top :100px;
+  right : 600px;
   background-color: white;
   opacity: 0.9;
   color: black;
