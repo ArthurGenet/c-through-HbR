@@ -197,18 +197,6 @@ define([
 		          slideElement.appendChild(title);
 
 		          /*********************************************************************
-		           * Create a new <img> element and place it inside the newly created slide
-		           * element. This will reference the thumbnail from the slide.
-		           *********************************************************************/
-		          var img = new Image();
-		          // Set the src URL of the image to the thumbnail URL of the slide
-		          img.src = slide.thumbnail.url;
-		          // Set the title property of the image to the title of the slide
-		          img.title = slide.title.text;
-		          // Place the image inside the new <div> element
-		          slideElement.appendChild(img);
-
-		          /*********************************************************************
 		           * Set up a click event handler on the newly created slide. When clicked,
 		           * the code defined below will execute.
 		           *********************************************************************/
