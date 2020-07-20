@@ -547,14 +547,14 @@ html, body {
 
 #slidesDiv {
   background-color: white;
-  opacity: 0.9;
+  opacity: 0.8;
   color: black;
   padding: 10px;
   visibility: hidden;
   overflow-y: auto;
   text-align: center;
   height: 245px;
-  width:130px;
+  width:118px;
   font-size: 12px;
 }
 
