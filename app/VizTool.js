@@ -141,6 +141,10 @@ define([
             },
 
             setVizState: function (state, filter, highlight, expression) {
+                console.log(state);
+                console.log(highlight);
+                console.log(filter);
+                console.log(expression);
                 this.highlight = highlight;
                 this.filter = filter;
                 this.viz = state;
@@ -250,6 +254,7 @@ define([
                         settings.layer2.definitionExpression = settings.buildingIDname + " <> '" + highlight+"'" ;
                     }
                 } else {
+                    console.log("ya r");
                     settings.layer1.definitionExpression = undefined;
                     settings.layer1.renderer = null;
                 }

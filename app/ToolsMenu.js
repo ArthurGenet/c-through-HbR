@@ -143,19 +143,21 @@ define([
 
                 this.state.combinedExpression = this.calculateCombinedExpression(this.settings);
                 console.log(this.state.combinedExpression);
+                console.log(this.state.filter);
                 this.setVizState(this.state.viz, this.state.filter, state, this.state.combinedExpression);
 
 
             },
 
             setVizState: function (state) {
+                console.log("vizstate");
                 this.state.viz = state;
 
                 this.vizTool.setVizState(this.state.viz, this.state.filter, this.state.highlight, this.state.combinedExpression);
             },
 
             resetFilterUI: function (mode) {
-            	
+            	console.log("resetFilterUI");
                 this.filterTool.resetUI(this.state.filter, function (state) {
 
                     this.state.filter = state;

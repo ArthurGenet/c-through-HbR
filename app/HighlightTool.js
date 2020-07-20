@@ -87,7 +87,7 @@ define([
                 console.log("ok");
                 this.stateName = state.name;
                 this.selection = state.features;
-
+                console.log(this.selection);
                 this.updateUI(this.stateName);
             },
 
