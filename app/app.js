@@ -155,12 +155,7 @@ define([
                 console.log(this.scene.initialViewProperties);
 
         this.view.ui.add([ "slidesDiv"], "top-right");
-		        Slide.createFrom(this.view).then(function(slide) {
-		        	console.log("oui");
-		  // Add slide to the scene presentation
-		  this.scene.presentation.slides.add(slide);
-		});
-
+		        
                 function createSlideUI(slide, placement) {
                 	console.log("create slide")
 		          /*********************************************************************
@@ -236,9 +231,9 @@ define([
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
 		             console.log(slide);
-		             var slide = this.scene.presentation.slides.getItemAt(0);
+		             var slide2 = this.scene.presentation.slides.getItemAt(0);
 		             console.log(slide);
-		            slide.applyTo(this.view);
+		            slide2.applyTo(this.view);
 		            console.log("okkkkkkkkk");
 		          });
 		        }
