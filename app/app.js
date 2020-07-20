@@ -337,7 +337,11 @@ define([
 
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
                     queryTools.distinctValues(this.settings.layer1, this.settings.usagename, this.settings.OIDname, function (distinctValues) {
-
+                    	var firstSlide = this.scene.presentation.slides.getItemAt(1);
+                	console.log(firstSlide);
+					firstSlide.applyTo(this.view).then(function() {
+					  // Slide has been successfully applied to the view
+					});
                         distinctValues.sort();
                         this.settings.values = distinctValues;
 
