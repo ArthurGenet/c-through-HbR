@@ -149,15 +149,9 @@ define([
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
 
                 if (valuemax == 15624){
-                    var index = totalrange.indexOf(15623.4);
-                    totalrange[index]=10;
-                    var index2 = totalrange.indexOf(6595.6);
-                    totalrange[index2]=10;
-                    var valuemax2 = 900;
+                    var valuemax = 900;
                 }
-                else{
-                   var valuemax2 = valuemax 
-                }
+                
 
                 console.log(totalrange);
                 console.log(index);
@@ -178,14 +172,7 @@ define([
                         field: fieldname,
                         stops: [
                             { value: valuemin, color: "#FBE789" },
-                            { value: 25, color: "#FBE789" },
-                            { value: 37, color: "#E2DD8C" },
-                            { value: 75, color: "#C9D38F" },
-                            { value: 175, color: "#B0CA93" },
-                            { value: 325, color: "#97C096" },
-                            { value: 750, color: "#7EB699" },
-                            { value: 1000, color: "#83BDB0" },
-                            { value: valuemax, color: "#83BDB0" },
+                            { value: valuemax, color: "#83BDB0" }
                         ]
                     }]
 
