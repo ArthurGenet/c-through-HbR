@@ -310,7 +310,7 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                        this.menu.viz.name = "white";
+                        this.menu.state.viz.name = "white";
                     }.bind(this));
 
                 }.bind(this)).otherwise(function (err) {
