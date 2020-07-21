@@ -146,7 +146,10 @@ define([
                 console.log(totalrange);
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
+                removeItem(valuemax, totalrange);
+                var valuemax2 = Math.ceil(Math.max.apply(Math, totalrange));
                 console.log(valuemax);
+                console.log(valuemax2);
                 console.log(valuemin);
                 return new UniqueValueRenderer({
                     defaultSymbol: new MeshSymbol3D({
@@ -162,6 +165,7 @@ define([
                         field: fieldname,
                         stops: [
                             { value: valuemin, color: "#FBE789" },
+                            { value: valuemax2, color: color },
                             { value: valuemax, color: "#83BDB0" }
                         ]
                     }]
