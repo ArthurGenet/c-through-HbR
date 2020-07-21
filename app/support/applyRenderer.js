@@ -153,7 +153,7 @@ define([
                     totalrange[index]=10;
                     var index2 = totalrange.indexOf(6595.6);
                     totalrange[index2]=10;
-                    var valuemax2 = 900;
+                    var valuemax2 = 1000;
                 }
                 else{
                    var valuemax2 = valuemax 
@@ -165,13 +165,7 @@ define([
                 console.log(valuemax2);
                 console.log(valuemin);
                 return new UniqueValueRenderer({
-                    defaultSymbol: new MeshSymbol3D({
-                        symbolLayers: [new FillSymbol3DLayer({
-                            material: {
-                                color: "white"
-                            }
-                        })]
-                    }),
+                    
                     defaultLabel: "N.A.",
                     visualVariables: [{
                         type: "color",
