@@ -310,7 +310,8 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                        this.menu.state.viz.name = "white";
+                        setTimeout(function(){ this.menu.state.viz.name = "white"; }, 1000);
+                        
                     }.bind(this));
 
                 }.bind(this)).otherwise(function (err) {
