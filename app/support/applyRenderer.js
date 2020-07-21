@@ -143,19 +143,27 @@ define([
                        totalrange.push(100);
                     }
                 }
+                
                 console.log(totalrange);
+
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
+                var valuemax2 = 0;
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
+
+
                 if (valuemax == 15624){
                     var index = totalrange.indexOf(15623.4);
                     totalrange[index]=10;
                     var index2 = totalrange.indexOf(6595.6);
                     totalrange[index2]=10;
+                    var valuemax2 = 1000;
+                }
+                else{
+                   var valuemax2 = valuemax 
                 }
 
                 console.log(totalrange);
                 console.log(index);
-                var valuemax2 = Math.ceil(Math.max.apply(Math, totalrange));
                 console.log(valuemax);
                 console.log(valuemax2);
                 console.log(valuemin);
