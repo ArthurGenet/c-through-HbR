@@ -143,11 +143,10 @@ define([
                        totalrange.push(100);
                     }
                 }
-                
+
                 console.log(totalrange);
 
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
-                var valuemax2 = 0;
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
 
 
@@ -157,6 +156,30 @@ define([
                     var index2 = totalrange.indexOf(6595.6);
                     totalrange[index2]=10;
                     var valuemax2 = 1000;
+                    return new UniqueValueRenderer({
+                    defaultSymbol: new MeshSymbol3D({
+                        symbolLayers: [new FillSymbol3DLayer({
+                            material: {
+                                color: "white"
+                            }
+                        })]
+                    }),
+                    defaultLabel: "N.A.",
+                    visualVariables: [{
+                        type: "color",
+                        field: fieldname,
+                        stops: [
+                            { value: valuemin, color: "#FBE789" },
+                            { value: valuemin, color: "#E2DD8C" },
+                            { value: valuemin, color: "#C9D38F" },
+                            { value: valuemin, color: "#B0CA93" },
+                            { value: valuemin, color: "#97C096" },
+                            { value: valuemin, color: "#7EB699" },
+                            { value: 1000, color: "#83BDB0" },
+                        ]
+                    }]
+
+                });
                 }
                 else{
                    var valuemax2 = valuemax 
