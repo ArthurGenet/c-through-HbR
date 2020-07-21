@@ -164,7 +164,7 @@ define([
                 this.filterTool.resetUI(this.state.filter, function (state) {
 
                     this.state.filter = state;
-
+                    console.log(mode);
                     if (mode == "highlight") {
                     this.setHighlightState({ name: "city", expression: undefined });
                     } 
