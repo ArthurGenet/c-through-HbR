@@ -152,6 +152,9 @@ define([
             setVizState: function (state) {
                 console.log("vizstate");
                 console.log(state);
+                if (state == "area"){
+                    state = "city";
+                }
                 this.state.viz = state;
                 console.log("vizstate2");
                 this.vizTool.setVizState(this.state.viz, this.state.filter, this.state.highlight, this.state.combinedExpression);
