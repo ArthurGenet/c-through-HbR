@@ -139,6 +139,9 @@ define([
                     if (selection[j].attributes[fieldname] !== null) {
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
+                    else{
+                       totalrange.push(0);
+                    }
                 }
                 console.log(totalrange);
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
