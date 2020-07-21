@@ -140,7 +140,7 @@ define([
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
                     else{
-                       totalrange.push(0);
+                       totalrange.push(100);
                     }
                 }
                 console.log(totalrange);
