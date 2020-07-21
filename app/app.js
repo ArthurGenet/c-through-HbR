@@ -50,7 +50,8 @@ define([
 
     "c-through/ToolsMenu",
     "c-through/welcome",
-    "c-through/support/queryTools"
+    "c-through/support/queryTools",
+    "c-through/VizTool"
 
 ], function (
     declare, esriConfig,
@@ -58,7 +59,7 @@ define([
     WebScene, SceneView, SceneLayer, Basemap,
     BasemapToggle, Home, Slide,
     dom, on, domCtr, win, domStyle,
-    ToolsMenu, Welcome, queryTools) {
+    ToolsMenu, Welcome, queryTools,viz) {
 
         var info = new OAuthInfo({
                     // Swap this ID out with a registered application ID
@@ -279,6 +280,7 @@ define([
                     this.scene.add(this.settings.layer2);
 
                     this.settings.layer1.visible = true;
+                    this.viz.updateVizState({ name: "area" });
                     this.settings.layer2.visible = false;
 
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
