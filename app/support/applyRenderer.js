@@ -165,16 +165,20 @@ define([
                 console.log(valuemax2);
                 console.log(valuemin);
                 return new UniqueValueRenderer({
-                    
+                    defaultSymbol: new MeshSymbol3D({
+                        symbolLayers: [new FillSymbol3DLayer({
+                            material: {
+                                color: "white"
+                            }
+                        })]
+                    }),
                     defaultLabel: "N.A.",
                     visualVariables: [{
                         type: "color",
                         field: fieldname,
                         stops: [
                             { value: valuemin, color: "#FBE789" },
-                            { value: valuemax2, color: "#83BDB0" },
-                            { value: valuemax, color: "#83BDB0" }
-                        ]
+                            { value: valuemax2, color: "#83BDB0" }                        ]
                     }]
 
                 });
