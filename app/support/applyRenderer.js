@@ -148,6 +148,7 @@ define([
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
                 var index = totalrange.indexOf(valuemax);
                 totalrange.splice(index, 1);
+                console.log(totalrange);
                 var valuemax2 = Math.ceil(Math.max.apply(Math, totalrange));
                 console.log(valuemax);
                 console.log(valuemax2);
