@@ -136,7 +136,6 @@ define([
 
                 
                 for (var j = 0; j < selection.length; j++) {
-                    console.log(selection[j].attributes[fieldname]);
                     if (selection[j].attributes[fieldname] !== null) {
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
