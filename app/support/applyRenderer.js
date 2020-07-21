@@ -136,26 +136,35 @@ define([
 
                 
                 for (var j = 0; j < selection.length; j++) {
-
                     if (selection[j].attributes[fieldname] !== null) {
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
                     else{
-                       totalrange.push(11);
+                       totalrange.push(100);
                     }
-                   if (j == selection.length-1){
-                        console.log("c'est tchao");
-                    }
+                }
+                console.log(totalrange);
+                var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
+                var valuemax2 = 0;
+                var valuemin = Math.floor(Math.min.apply(Math, totalrange));
+
+                if (valuemax == 15624){
+                    var index = totalrange.indexOf(15623.4);
+                    totalrange[index]=10;
+                    var index2 = totalrange.indexOf(6595.6);
+                    totalrange[index2]=10;
+                    var valuemax2 = 900;
+                }
+                else{
+                   var valuemax2 = valuemax 
                 }
 
                 console.log(totalrange);
-
-                var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
-                var valuemin = Math.floor(Math.min.apply(Math, totalrange));
-
-
-                if (valuemax == 15624){          
-                    return new UniqueValueRenderer({
+                console.log(index);
+                console.log(valuemax);
+                console.log(valuemax2);
+                console.log(valuemin);
+                return new UniqueValueRenderer({
                     defaultSymbol: new MeshSymbol3D({
                         symbolLayers: [new FillSymbol3DLayer({
                             material: {
@@ -179,31 +188,6 @@ define([
                     }]
 
                 });
-                }
-                else{
-                    return new UniqueValueRenderer({
-                        defaultSymbol: new MeshSymbol3D({
-                            symbolLayers: [new FillSymbol3DLayer({
-                                material: {
-                                    color: "white"
-                                }
-                            })]
-                        }),
-                        defaultLabel: "N.A.",
-                        visualVariables: [{
-                            type: "color",
-                            field: fieldname,
-                            stops: [
-                                { value: valuemin, color: "#FBE789" },
-                                { value: valuemax, color: "#83BDB0" }
-                            ]
-                        }]
-
-                    });
-                }
-
-                
-               
             },
 
             createRendererVVbar: function (min, max, color, fieldname) {
