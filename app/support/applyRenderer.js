@@ -177,6 +177,7 @@ define([
                         type: "color",
                         field: fieldname,
                         stops: [
+                            { value: valuemin, color: "#FBE789" },
                             { value: 25, color: "#FBE789" },
                             { value: 37, color: "#E2DD8C" },
                             { value: 75, color: "#C9D38F" },
@@ -184,6 +185,7 @@ define([
                             { value: 325, color: "#97C096" },
                             { value: 750, color: "#7EB699" },
                             { value: 1000, color: "#83BDB0" },
+                            { value: valuemax, color: "#83BDB0" },
                         ]
                     }]
 
