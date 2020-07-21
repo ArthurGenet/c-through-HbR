@@ -152,9 +152,7 @@ define([
             setVizState: function (state) {
                 console.log("vizstate");
                 console.log(state.name);
-                if (state.name == "area"){
-                    state = "city";
-                }
+                
                 this.state.viz = state;
                 console.log(this.state.viz);
                 console.log("vizstate2");
