@@ -149,7 +149,8 @@ define([
                 if (valuemax == 15624){
                     var index = totalrange.indexOf(15623.4);
                     totalrange.splice(index, 1);
-                    
+                    var index = totalrange.indexOf(6595.6);
+                    totalrange.splice(index2, 1);
                 }
 
                 console.log(totalrange);
