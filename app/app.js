@@ -310,27 +310,6 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                        setTimeout(function(){ this.menu = new ToolsMenu({
-                            config: this.settings,
-                            map: this.scene,
-                            view: this.view,
-                            state: {
-                                highlight: {
-                                    name: "city",
-                                    features: undefined
-                                },
-                                viz: {
-                                    name: "white"
-                                },
-                                filter: {
-                                    name: "none",
-                                    usageFeatures: undefined,
-                                    areaFeatures: undefined,
-                                    floorFeatures: undefined
-                                },
-                                combinedFilteredFeatures: undefined
-                            }
-                        });}, 1000);
                         
                     }.bind(this));
 
