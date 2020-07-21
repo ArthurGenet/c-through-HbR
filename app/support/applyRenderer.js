@@ -153,11 +153,7 @@ define([
                 }
                 
 
-                console.log(totalrange);
-                console.log(index);
-                console.log(valuemax);
-                console.log(valuemax2);
-                console.log(valuemin);
+                
                 return new UniqueValueRenderer({
                     defaultSymbol: new MeshSymbol3D({
                         symbolLayers: [new FillSymbol3DLayer({
