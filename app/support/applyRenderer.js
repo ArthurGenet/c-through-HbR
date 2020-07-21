@@ -146,8 +146,11 @@ define([
                 console.log(totalrange);
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
-                var index = totalrange.indexOf(valuemax);
-                totalrange.splice(index, 1);
+                if (valuemax == 15624){
+                    var index = totalrange.indexOf(15623.4);
+                    totalrange.splice(index, 1);
+                }
+
                 console.log(totalrange);
                 console.log(index);
                 var valuemax2 = Math.ceil(Math.max.apply(Math, totalrange));
