@@ -170,11 +170,11 @@ define([
                         field: fieldname,
                         stops: [
                             { value: valuemin, color: "#FBE789" },
-                            { value: valuemin, color: "#E2DD8C" },
-                            { value: valuemin, color: "#C9D38F" },
-                            { value: valuemin, color: "#B0CA93" },
-                            { value: valuemin, color: "#97C096" },
-                            { value: valuemin, color: "#7EB699" },
+                            { value: 25, color: "#E2DD8C" },
+                            { value: 50, color: "#C9D38F" },
+                            { value: 100, color: "#B0CA93" },
+                            { value: 250, color: "#97C096" },
+                            { value: 500, color: "#7EB699" },
                             { value: 1000, color: "#83BDB0" },
                         ]
                     }]
