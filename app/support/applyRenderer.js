@@ -130,11 +130,13 @@ define([
             },
 
             createRendererVV: function (selection, fieldname) {
-
+                console.log(selection);
+                console.log(fieldname);
                 var totalrange = [];
 
                 
                 for (var j = 0; j < selection.length; j++) {
+                    console.log(selection[j].attributes[fieldname]);
                     if (selection[j].attributes[fieldname] !== null) {
                         totalrange.push(selection[j].attributes[fieldname]);
                     }
