@@ -299,7 +299,7 @@ define([
                                     features: undefined
                                 },
                                 viz: {
-                                    name: "area"
+                                    name: "white"
                                 },
                                 filter: {
                                     name: "none",
@@ -310,7 +310,7 @@ define([
                                 combinedFilteredFeatures: undefined
                             }
                         });
-                        
+
                     }.bind(this));
 
                 }.bind(this)).otherwise(function (err) {

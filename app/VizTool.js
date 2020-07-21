@@ -256,7 +256,7 @@ define([
                 } else {
                     console.log("ya r");
                     settings.layer1.definitionExpression = undefined;
-                    settings.layer1.renderer = null;
+                    //settings.layer1.renderer = null;
                 }
 
                 // visualization
