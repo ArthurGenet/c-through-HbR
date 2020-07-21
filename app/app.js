@@ -280,7 +280,7 @@ define([
                     this.scene.add(this.settings.layer2);
 
                     this.settings.layer1.visible = true;
-                    this.viz.updateVizState({ name: "area" });
+                    viz.updateVizState({ name: "area" });
                     this.settings.layer2.visible = false;
 
                     // retrieve distinct values of usage attribute from feature service to create UI (filter dropdowns)
