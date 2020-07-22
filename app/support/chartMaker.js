@@ -76,7 +76,6 @@ define([
                     groupPercentValue = "2";
                 }
 
-                console.log(data);
 
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "pie",
@@ -99,7 +98,6 @@ define([
                     "clickSlice": function (dataItem, event) {
 
                         var value = dataItem.title;
-                        console.log(settings.values);
                         var fields = [];
                         for (var i = 0; i < settings.values.length; i++) {
                             fields.push({
@@ -116,19 +114,15 @@ define([
 
                         var selectedvalues = [];
                         var selectedcolor = [];
-                        console.log(fields);
                         for (var k = 0; k < fields.length; k++) {
                             selectedvalues.push(fields[k].values);
                             selectedcolor.push(fields[k].color);
                         }
-                        console.log(selectedvalues);
-                        console.log(selectedcolor);
 
                         if (dataItem.pulled) {
                             chart.pullSlice(dataItem, 0);
  
                             settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
-                            console.log("pull");
                             view.environment.lighting.directShadowsEnabled = true;
                             view.environment.lighting.ambientOcclusionEnabled = true;
 

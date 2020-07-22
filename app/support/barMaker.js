@@ -111,11 +111,8 @@ define([
                 var bins_new = (max - min) / kernelwidth;
 
                 
-                console.log(kernel);
-                console.log(max);
 
                 if(max > 2000){
-                    console.log("oui");
                     if(max > 10000){
                         kernel = [{min:0,max:25},{min:25,max:50},{min:50,max:100},{min:100,max:250},{min:250,max:500},{min:500,max:1000},{min:1000,max:20000}]
                     }
@@ -158,7 +155,6 @@ define([
                         "color": color[i]
                     });
                 }
-                console.log(kernel);
                 for (var k = 0; k < totalrange.length; k++) {
                     for (var m = 0; m < kernel.length; m++) {
                         if (totalrange[k] > kernel[m].min && totalrange[k] <= kernel[m].max) {
@@ -166,13 +162,11 @@ define([
                         }
                     }
                 }
-                console.log(chartData);
                 return chartData;
             },
 
 
             createChart: function (selection, data, settings, state, view, callback) {
-                console.log(data);
                 var chart = AmCharts.makeChart("chartDiv", {
                     "type": "serial",
                     "theme": "light",

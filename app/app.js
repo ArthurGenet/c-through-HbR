@@ -144,19 +144,10 @@ define([
                 this.view.ui.add(homeWidget, "top-left");
 
 
-                console.log(this.scene);
-                console.log(this.scene.initialViewProperties);
-
-        
-
-
-
-
         this.view.ui.add([ "slidesDiv"], "top-right");
 
         		var view =this.view;
                 function createSlideUI(slide, placement) {
-                	console.log("create slide")
 		          /*********************************************************************
 		           * Create a new <div> element which contains all the slide information.
 		           * Store a reference to the created DOM node so we can use it to place
@@ -172,10 +163,8 @@ define([
 		           *********************************************************************/
 		          var slidesDiv = document.getElementById("slidesDiv");
 		          if (placement === "first") {
-		          	console.log("ok");
 		            slidesDiv.insertBefore(slideElement, slidesDiv.firstChild);
 		          } else {
-		          	console.log("ta");
 		            slidesDiv.appendChild(slideElement);
 		          }
 
@@ -192,22 +181,18 @@ define([
 		           * the code defined below will execute.
 		           *********************************************************************/
 		          slideElement.addEventListener("click", function () {
-		          	console.log("click");
 		            /*******************************************************************
 		             * Remove the "active" class from all elements with the .slide class
 		             *******************************************************************/
 		            var slides = document.querySelectorAll(".slide");
-		            console.log(slides);
 		            Array.from(slides).forEach(function (node) {
 		              node.classList.remove("active");
 		            });
-		            console.log("okk");
-		            console.log(slideElement);
+
 		            /*******************************************************************
 		             * Add the "active" class on the current element being selected
 		             *******************************************************************/
 		            slideElement.classList.add("active");
-		            console.log("okkkk");
 		            /******************************************************************
 		             * Applies a slide's settings to the SceneView.
 		             *
@@ -217,9 +202,7 @@ define([
 		             * allows the user to animate to the given slide's viewpoint and turn
 		             * on its visible layers and basemap layers in the view.
 		             ******************************************************************/
-		             console.log(slide);
 		            slide.applyTo(view);
-		            console.log("okkkkkkkkk");
 		          });
 		        }
 
@@ -250,7 +233,6 @@ define([
 		           * the WebScene.
 		           *********************************************************************/
 		          var slides = this.scene.presentation.slides;
-		          console.log(slides);
 
 		          /*********************************************************************
 		           * Loop through each slide in the collection and render the slide
@@ -267,9 +249,6 @@ define([
 
                     // retrieve active layer from webscene
                     this.settings.layer1 = this.scene.layers.getItemAt(2);
-                    console.log(this.settings.layer1);
-                    console.log(this.settings.layer1.title);
-                    console.log(this.settings.layer1.fields);
 
                     // create background layer (identical copy of activ layer) for highlighting and add it to the scene
                     this.settings.layer2 = new SceneLayer({

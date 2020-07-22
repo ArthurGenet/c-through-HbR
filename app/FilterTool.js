@@ -168,10 +168,8 @@ define([
             },
 
             setFilterState: function (state) {
-                console.log(this.state);
-                console.log(state);
+
                 this.state = state.filter;
-                console.log(this.state);
                 this.selection = state.combinedFilteredFeatures;
 
                 this.updateUI(this.state);

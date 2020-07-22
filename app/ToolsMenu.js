@@ -142,31 +142,25 @@ define([
                 this.highlightTool.setHighlightState(state);
 
                 this.state.combinedExpression = this.calculateCombinedExpression(this.settings);
-                console.log(this.state.combinedExpression);
-                console.log(this.state.filter);
+                
                 this.setVizState(this.state.viz, this.state.filter, state, this.state.combinedExpression);
 
 
             },
 
             setVizState: function (state) {
-                console.log("vizstate");
-                console.log(state.name);
                 
                 this.state.viz = state;
-                console.log(this.state.viz);
-                console.log("vizstate2");
+
                 this.vizTool.setVizState(this.state.viz, this.state.filter, this.state.highlight, this.state.combinedExpression);
             },
 
             resetFilterUI: function (mode) {
-            	console.log("resetFilterUI");
                 this.filterTool.resetUI(this.state.filter, function (state) {
 
                     this.state.filter = state;
-                    console.log(mode);
                     if (mode == "highlight") {
-                    this.setHighlightState({ name: "city", expression: undefined });
+                        this.setHighlightState({ name: "city", expression: undefined });
                     } 
 
                     if (mode == "filter") {

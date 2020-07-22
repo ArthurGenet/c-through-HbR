@@ -71,7 +71,6 @@ define([
             },
 
             updateHighlightState: function (state) {
-                console.log("ok");
                 this.stateName = state.name;
                 this.selection = state.features;
 
@@ -84,11 +83,9 @@ define([
             },
 
             setHighlightState: function (state) {
-                console.log("ok");
                 this.stateName = state.name;
                 this.selection = state.features;
                 
-                console.log(this.selection);
                 this.updateUI(this.stateName);
             },
 
@@ -99,7 +96,6 @@ define([
                 }
 
                 if (state === "building") {
-                    console.log("ok");
                     this.label.innerHTML = "Selectie: Gebouwniveau";
                 }
 
@@ -109,7 +105,6 @@ define([
             },
 
             clickHandler: function () {
-                console.log("click");
                 var view = this.view;
 
                 var viewDiv = dom.byId("viewDiv");
@@ -122,10 +117,8 @@ define([
                 view.on("click", function (event) {
                     view.hitTest(event.screenPoint).then(function (response) {
                         var result = response.results[0];
-                        console.log(result);
 
                         if (!result) {
-                            console.log("pas bon");
                             this.menu.resetFilterUI("highlight");
                         }
                         else {
@@ -137,7 +130,6 @@ define([
                                         this.processGraphic(result.graphic, function (buildingID) {
                                             if (this.settings.name === "Zurich" || this.settings.name === "Vancouver" || this.settings.name === "Demo") {
                                                 buildingIDs = String(buildingIDs).concat(", " + buildingID);
-                                                console.log(buildingIDs);
                                                 this.updateHighlightState({ name: "multiple buildings", features: buildingIDs });
                                             } else {
                                                 buildingIDs = buildingIDs.concat(", '" + buildingID + "'");
@@ -147,7 +139,6 @@ define([
                                     } else {
                                         this.processGraphic(result.graphic, function (buildingID) {
                                             if (this.settings.name === "Zurich" || this.settings.name === "Vancouver" || this.settings.name === "Demo"){
-                                                console.log(buildingID);
                                                 this.updateHighlightState({ name: "building", features: buildingID});
 
                                             } else {
@@ -193,7 +184,6 @@ define([
                     }
 
                     var buildingID = results.features[0].attributes[this.settings.buildingIDname];
-                    console.log(buildingID);
                     callback(buildingID);
 
                 }.bind(this)).otherwise(function (err) {

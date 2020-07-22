@@ -130,8 +130,7 @@ define([
             },
 
             createRendererVV: function (selection, fieldname) {
-                console.log(selection);
-                console.log(fieldname);
+
                 var totalrange = [];
 
                 
@@ -144,7 +143,6 @@ define([
                     }
                 }
 
-                console.log(totalrange);
 
                 var valuemax = Math.ceil(Math.max.apply(Math, totalrange));
                 var valuemin = Math.floor(Math.min.apply(Math, totalrange));
@@ -204,9 +202,6 @@ define([
 
             createRendererVVbar: function (min, max, color, fieldname) {
 
-                console.log(min);
-                console.log(max);
-                console.log(color);
                 var defaultcolor = [135, 135, 135, 0.2];
 
                 return new UniqueValueRenderer({

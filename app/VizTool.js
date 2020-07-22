@@ -141,10 +141,7 @@ define([
             },
 
             setVizState: function (state, filter, highlight, expression) {
-                console.log(state);
-                console.log(highlight);
-                console.log(filter);
-                console.log(expression);
+
                 this.highlight = highlight;
                 this.filter = filter;
                 this.viz = state;
@@ -195,8 +192,7 @@ define([
                             usage: initUsage,
                             area: initArea
                         };
-                        console.log(initData);
-                        console.log(initCharts);
+
                         callback(initData, initCharts);
 
                     }.bind(this));
@@ -218,33 +214,25 @@ define([
 
                 settings.layer1.opacity = 0.8;
                 settings.layer2.opacity = 0.8;
-                console.log(highlight);
-                console.log(selection);
 
                 
                 if (selection !== undefined && selection !== "") {
-                    console.log(selection.substring(0,10));
                     if(selection.substring(0,10) == "COMPLEX_NO" ){
-                        console.log("ici");
                         selection_new = settings.buildingIDname + " LIKE '"+ highlight +"' ";
-                        console.log(selection.length);
-                        console.log(selection);
+
                         if (selection.length>19){
-                            console.log("al");
                             selection = selection_new + selection.substring(20,selection.length);
                         }
                         else{
                             selection = selection_new;
                         }
                     }
-                    console.log(selection);
                     settings.layer1.definitionExpression = selection ;
 
                     
 
                     settings.layer2.visible = false;
 
-                    console.log(highlight);
                     if (highlight == undefined) {
                         settings.layer2.visible = false;
                     } else {
@@ -254,7 +242,6 @@ define([
                         settings.layer2.definitionExpression = settings.buildingIDname + " <> '" + highlight+"'" ;
                     }
                 } else {
-                    console.log("ya r");
                     settings.layer1.definitionExpression = undefined;
                     settings.layer1.renderer = null;
                 }
@@ -262,7 +249,6 @@ define([
                 // visualization
 
                 if (selection !== undefined && selection !== "") {
-                    console.log("on change la visualisation");
                     this.changeVisualiationSelection(vizName, this.menu, this.settings, this.view);
                 } else {
                     this.changeVisualisationCity(vizName, this.initData, this.initCharts);
@@ -317,9 +303,7 @@ define([
                 query.outFields = [settings.OIDname, settings.usagename, settings.areaname, settings.floorname, settings.buildingIDname];
 
                 settings.layer1.queryFeatures(query).then(function (result) {
-                    console.log(result);
                     var selection = result.features;
-                    console.log(selection);
                     if (vizName === "white") {
                         settings.layer1.renderer = applyRenderer.createSimpleRenderer();
 
@@ -332,8 +316,7 @@ define([
                         });
                     }
                     if (vizName === "usage") {
-                        console.log("usage");
-                        console.log(settings.values);
+                        
                         settings.layer1.renderer = applyRenderer.createRenderer(settings.values, settings.color, settings.usagename);
 
                         domStyle.set(dom.byId("chartDiv"), { "opacity": 1 });
