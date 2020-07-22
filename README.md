@@ -1,4 +1,7 @@
-# c-through
+# c-through HbR
+
+C-Through HbR is a version of c-through created for the port authority of Rotterdam. Below are the explanations for the c-through app made by Lisa Staehli.
+[View it live](https://arthurgenet.github.io/c-through-HbR/)
 
 ![screenshot](https://cloud.githubusercontent.com/assets/27951811/25848186/7a69ac2a-34b9-11e7-852c-568a277ae0fd.png)
 
