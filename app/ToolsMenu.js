@@ -159,10 +159,9 @@ define([
                 this.filterTool.resetUI(this.state.filter, function (state) {
 
                     this.state.filter = state;
-                    if (mode == "highlight") {
-                        this.setHighlightState({ name: "city", expression: undefined });
-                    } 
-
+                    
+                    this.setHighlightState({ name: "city", expression: undefined });
+                    
                     if (mode == "filter") {
                         this.setHighlightState(this.state.highlight);
                     }
