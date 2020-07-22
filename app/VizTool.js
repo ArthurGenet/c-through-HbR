@@ -93,7 +93,7 @@ define([
                 this.title = domCtr.create("div", { className: "titleViz", id: "titleViz", innerHTML: "Visualiseren op" }, container);
                 this.label1 = domCtr.create("div", { className: "labelViz", id: "viz-white", innerHTML: "geen" }, container);
                 this.label2 = domCtr.create("div", { className: "labelViz", id: "viz-usage", innerHTML: "gebruiksfunctie" }, container);
-                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "oppervlake" }, container);
+                this.label3 = domCtr.create("div", { className: "labelViz", id: "viz-area", innerHTML: "oppervlakte" }, container);
 
                 this.statsDiv = domCtr.create("div", { id: "statsDiv", className: "statsDiv" }, container);
                 this.chartDiv = domCtr.create("div", { id: "chartDiv", className: "chartDiv" }, container);
